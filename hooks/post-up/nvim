@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cd ~/.config/nvim
+
+nvim -u updaterc +PlugUpdate +PlugInstall +qa
