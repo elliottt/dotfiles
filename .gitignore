@@ -1,2 +1,5 @@
-config/nvim/swap/
-config/nvim/bundle/
+# Vim
+/config/nvim/.netrwhist
+/config/nvim/bundle/
+/config/nvim/spell/
+/config/nvim/swap/
