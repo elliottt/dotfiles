@@ -42,6 +42,7 @@ export PATH="$PATH:$HOME/.cargo/bin"
 
 if command -v rg > /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
+  export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
