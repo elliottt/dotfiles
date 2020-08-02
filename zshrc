@@ -38,4 +38,8 @@ scp() {
 
 export EDITOR='nvim'
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -d ~/.fzf ]; then
+  export PATH="${PATH:+${PATH}:}$HOME/.fzf/bin"
+  source ~/.fzf/shell/completion.zsh
+  source ~/.fzf/shell/key-bindings.zsh
+fi
