@@ -1,1 +1,1 @@
-SYMLINK_DIRS="config/nvim"
+SYMLINK_DIRS="config/nvim tmux"
