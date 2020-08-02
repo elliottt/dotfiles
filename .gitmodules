@@ -1,0 +1,6 @@
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = git@github.com:ohmyzsh/ohmyzsh
+[submodule "config/zsh_custom/themes/agkozak"]
+	path = config/zsh_custom/themes/agkozak
+	url = git@github.com:agkozak/agkozak-zsh-prompt
