@@ -1,7 +1,3 @@
-# Path to your oh-my-zsh configuration.
-ZSH="$HOME/.oh-my-zsh"
-ZSH_CUSTOM="$HOME/.config/zsh_custom"
-
 # prompt customization
 ZSH_THEME="agkozak"
 AGKOZAK_LEFT_PROMPT_ONLY=1
