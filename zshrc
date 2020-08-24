@@ -11,10 +11,8 @@ plugins=(gitfast git brew vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
-# special key bindings
-bindkey -e
-bindkey "^f" forward-word
-bindkey "^b" backward-word
+# vim keybindings
+bindkey -v
 
 # ghc management
 use_ghc() {
