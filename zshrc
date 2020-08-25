@@ -14,11 +14,6 @@ source $ZSH/oh-my-zsh.sh
 # vim keybindings
 bindkey -v
 
-# ghc management
-use_ghc() {
-  export PATH=$HOME/local/ghc/$1/bin:$PATH
-}
-
 # handy scp wrapper for avoiding the weird local-to-local behavior
 scp() {
   if grep -q : <(printf %s "$@")
