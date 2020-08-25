@@ -29,6 +29,9 @@ export EDITOR='nvim'
 
 export PATH="$PATH:$HOME/.cargo/bin"
 
+export LANG="en_US.utf8"
+export LC_CTYPE="en_US.utf8"
+
 if command -v rg > /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files'
   export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
