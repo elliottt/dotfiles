@@ -14,4 +14,4 @@ eval $(ssh-agent)
 feh --bg-tile ~/Documents/cat_tile.png
 
 # Start awesome
-exec dbus-launch i3
+exec dbus-launch herbstluftwm --locked
