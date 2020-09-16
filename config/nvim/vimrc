@@ -29,6 +29,9 @@ nnoremap <silent> <Leader><Leader> :noh<Enter>
 " Always show cursor position
 set ruler
 
+" Always show line numbers
+set nu
+
 " Always reload modified files
 set autoread
 
