@@ -21,7 +21,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 " }}}
 
 " fzf {{{
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " }}}
 
