@@ -14,8 +14,7 @@ command! -nargs=* Break call SetBreakPoint(expand("<args>"))
 
 setlocal signcolumn=yes
 
-" Indent by two spaces
-set shiftwidth=2
+set shiftwidth=4
 
 " Wrap the line at 120 characters
 set textwidth=120
