@@ -9,10 +9,10 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(git brew)
 
+source $ZSH/oh-my-zsh.sh
+
 # vim keybindings
 bindkey -v
-
-source $ZSH/oh-my-zsh.sh
 
 # handy scp wrapper for avoiding the weird local-to-local behavior
 scp() {
