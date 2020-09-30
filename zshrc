@@ -7,12 +7,12 @@ DISABLE_AUTO_UPDATE="true"
 DISABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(gitfast git brew vagrant)
-
-source $ZSH/oh-my-zsh.sh
+plugins=(git brew)
 
 # vim keybindings
 bindkey -v
+
+source $ZSH/oh-my-zsh.sh
 
 # handy scp wrapper for avoiding the weird local-to-local behavior
 scp() {
@@ -28,13 +28,3 @@ scp() {
 export EDITOR='nvim'
 
 export PATH="$PATH:$HOME/.cargo/bin"
-
-export LANG="en_US.utf8"
-export LC_CTYPE="en_US.utf8"
-
-if command -v rg > /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files'
-  export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
