@@ -10,10 +10,6 @@ if [ -d "$FZF_HOME" ]; then
     export PATH="$FZF_HOME/bin:$PATH"
   fi
 
-  if [ -f "$FZF_HOME/shell/completion.zsh" ]; then
-    source "$FZF_HOME/shell/completion.zsh"
-  fi
-
   export FZF_DEFAULT_COMMAND="rg --files"
   export FZF_CTRL_T_COMMAND="rg --files"
 fi

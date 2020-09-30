@@ -28,3 +28,8 @@ scp() {
 export EDITOR='nvim'
 
 export PATH="$PATH:$HOME/.cargo/bin"
+
+if [ -d "$FZF_HOME" ]; then
+  [ -f "$FZF_HOME/shell/completion.zsh" ] && . "$FZF_HOME/shell/completion.zsh"
+  [ -f "$FZF_HOME/shell/key-bindings.zsh" ] && . "$FZF_HOME/shell/key-bindings.zsh"
+fi
