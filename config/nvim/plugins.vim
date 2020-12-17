@@ -79,10 +79,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'jez/vim-superman'
 " }}}
 
-" {{{ Snippets
-Plug 'SirVer/ultisnips'
-" }}}
-
 " {{{ Initialize plugins
 call plug#end()
 filetype on
