@@ -9,6 +9,12 @@ set rtp+=$VIMHOME/bundle/vim-plug
 call plug#begin($VIMHOME . '/bundle')
 " }}}
 
+Plug 'lervag/wiki.vim'
+let g:wiki_filetypes = ['md']
+let g:wiki_link_extension = '.md'
+let g:wiki_root = '~/.notes/'
+let g:wiki_link_target_type = 'md'
+
 " two-trucs {{{
 Plug 'elliottt/two-trucs', { 'do': 'make release' }
 " }}}
