@@ -14,6 +14,28 @@ let g:wiki_filetypes = ['md']
 let g:wiki_link_extension = '.md'
 let g:wiki_root = '~/.notes/'
 let g:wiki_link_target_type = 'md'
+let g:wiki_journal = {
+            \ 'name': 'journal',
+            \ 'frequency': 'weekly',
+            \ 'date_format': {
+            \   'daily' : '%Y-%m-%d',
+            \   'weekly' : '%Y_w%V',
+            \   'monthly' : '%Y_m%m',
+            \ },
+            \ }
+let g:wiki_mappings_use_defaults = 'global'
+let g:wiki_mappings_local = {
+            \ '<plug>(wiki-page-toc)': '<Leader>wt',
+            \ '<plug>(wiki-link-open)': '<cr>',
+            \ '<plug>(wiki-list-toggle)': '<c-s>',
+            \ '<plug>(wiki-journal-next)': '<c-j>',
+            \ '<plug>(wiki-journal-prev)': '<c-k>',
+            \ }
+
+if executable('gdate')
+    let g:wiki_date_exe = 'gdate'
+end
+
 
 " two-trucs {{{
 Plug 'elliottt/two-trucs', { 'do': 'make release' }
