@@ -97,7 +97,7 @@ let g:markdown_fold_style = 'nested'
 
 " {{{ Editing
 Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+" Plug 'junegunn/limelight.vim'
 Plug 'jez/vim-superman'
 " }}}
 
