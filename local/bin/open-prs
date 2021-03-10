@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+hub pr list -^ --color=always -o updated -f "%U %<(14,trunc)%ur %pC%i%Creset by @%<(15,trunc)%au %t%n" | \
+  fzf --ansi --multi --height '25%' --with-nth '2..' | \
+  cut -d ' ' -f 1 | \
+  xargs open
