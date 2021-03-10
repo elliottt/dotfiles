@@ -12,4 +12,6 @@ if [ -d "$FZF_HOME" ]; then
 
   export FZF_DEFAULT_COMMAND="rg --files"
   export FZF_CTRL_T_COMMAND="rg --files"
+
+  export FZF_DEFAULT_OPTS="--layout=reverse"
 fi
