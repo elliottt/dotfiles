@@ -1,4 +1,7 @@
-let mapleader      = ","
+
+nnoremap <space> <nop>
+let mapleader = " "
+
 let maplocalleader = ";"
 
 runtime env.vim
