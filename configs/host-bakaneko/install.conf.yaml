@@ -1,0 +1,10 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.xmodmap: xmodmap
+    ~/.xsession: xsession
+    ~/.config:
+      glob: true
+      path: config/*

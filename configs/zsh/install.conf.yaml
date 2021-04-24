@@ -1,0 +1,14 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.config/zsh_custom:
+      glob: true
+      path: config/zsh_custom/*.zsh
+    ~/.config/zsh_custom/themes/agkozak: config/zsh_custom/themes/agkozak
+    ~/.config/zsh_custom/themes/agkozak.zsh-theme: config/zsh_custom/themes/agkozak.zsh-theme
+    ~/.oh-my-zsh: oh-my-zsh
+    ~/.zprofile: zprofile
+    ~/.zshenv: zshenv
+    ~/.zshrc: zshrc
