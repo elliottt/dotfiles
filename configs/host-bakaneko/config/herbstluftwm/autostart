@@ -22,7 +22,7 @@ hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-Return spawn "${TERMINAL:-urxvt}"
-hc keybind $Mod-d spawn rofi -show run
+hc keybind $Mod-d spawn rofi -theme "~/.config/herbstluftwm/rofi.rasi" -show run
 
 hc keybind $Mod-Control-q spawn i3lock-fancy
 
