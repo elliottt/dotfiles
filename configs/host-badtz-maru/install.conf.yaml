@@ -1,0 +1,8 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.config/zsh_custom:
+      glob: true
+      path: config/zsh_custom/*
