@@ -22,7 +22,5 @@ export PATH="/Users/trevor/stripe/space-commander/bin:$PATH"
 # Add Visual Studio Code (code)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-export PATH="$HOME/.cargo/bin:$PATH"
-
 # Use fzf from homebrew
 export FZF_HOME="/usr/local/opt/fzf"

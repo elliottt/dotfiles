@@ -14,6 +14,7 @@ let g:wiki_filetypes = ['md']
 let g:wiki_link_extension = '.md'
 let g:wiki_root = '~/.notes/'
 let g:wiki_link_target_type = 'md'
+let g:wiki_list_todos = ['[ ]', '[x]']
 let g:wiki_journal = {
             \ 'name': 'journal',
             \ 'frequency': 'weekly',

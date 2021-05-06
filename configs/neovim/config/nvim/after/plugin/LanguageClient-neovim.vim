@@ -1,20 +1,26 @@
 
 let g:LanguageClient_serverCommands = {
-            \ 'cpp': ['/usr/bin/clangd'],
             \ 'rust': ['rust-analyzer'],
-            \ 'ruby': ['pay', 'exec', 'scripts/bin/typecheck', '--lsp'],
             \ }
 
 if filereadable("./compile_commands.json")
-  let clangd = glob('bazel-*/external/llvm_toolchain/bin/clangd', 0, 1)
+  let clangd = glob('bazel-*/external/llvm_toolchain*/bin/clangd', 0, 1)
   if len(clangd) == 1
     let g:LanguageClient_serverCommands.cpp = [clangd[0]]
+  else
+    let g:LanguageClient_serverCommands.cpp = ['clangd']
   endif
 endif
 
-let g:LanguageClient_useVirtualText = "No"
+if filereadable("scripts/bin/typecheck")
+  let g:LanguageClient_serverCommands.ruby = ['pay', 'exec', 'scripts/bin/typecheck', '--lsp']
+elseif filereadable("~/stripe/sorbet/bazel-bin/main/sorbet")
+  let g:LanguageClient_serverCommands.ruby = ['~/stripe/sorbet/bazel-bin/main/sorbet', '--lsp']
+end
 
+let g:LanguageClient_useVirtualText = "No"
 let g:LanguageClient_hoverPreview = "Always"
+let g:LanguageClient_selectionUI = "location-list"
 
 nnoremap <silent> K  :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <LocalLeader>k  :call LanguageClient#explainErrorAtPoint()<CR>
