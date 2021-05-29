@@ -1,0 +1,9 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.local/bin:
+      glob: true
+      path: local/bin/*
+    ~/.config/git: config/git

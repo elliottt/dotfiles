@@ -1,0 +1,17 @@
+* {
+  separator-style: "solid";
+  hide-scrollbar: true;
+}
+
+window {
+  background-color: @background;
+  border: 1px;
+  border-color: black;
+  padding: 5px;
+}
+
+listview {
+  background: @background;
+  border: 1px 0px 0px;
+  border-color: black;
+}
