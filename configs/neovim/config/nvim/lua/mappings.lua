@@ -53,6 +53,9 @@ local function lsp_attach(_, bufnr)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>a', '<cmd>lua vim.lsp.buf.codeaction()<cr>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>k', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
 end
 
 return { lsp_attach = lsp_attach }
