@@ -24,3 +24,6 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 
 # Use fzf from homebrew
 export FZF_HOME="/usr/local/opt/fzf"
+
+# Pinned for development
+export PYENV_VERSION="3.7.3"
