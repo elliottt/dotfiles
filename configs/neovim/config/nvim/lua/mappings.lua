@@ -1,6 +1,8 @@
 
 local opts = { noremap = true, silent = true }
 
+vim.api.nvim_set_keymap('i', 'jk', '<esc>', opts)
+
 -- fzf
 vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>Files<cr>', opts)
 vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Tags<cr>', opts)

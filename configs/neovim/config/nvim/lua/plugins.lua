@@ -38,6 +38,7 @@ return require 'packer'.startup(function(use)
         end,
     }
 
+    use 'nvim-treesitter/nvim-treesitter'
     use 'neovim/nvim-lspconfig'
 
     use 'benmills/vimux'

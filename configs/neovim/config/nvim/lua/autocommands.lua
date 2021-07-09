@@ -1,7 +1,7 @@
 
 -- config
 vim.cmd([[
-augroup config
+augroup reloading
     autocmd!
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
     autocmd BufWritePost autocommands.lua source <afile>
@@ -15,21 +15,21 @@ augroup END
 vim.cmd([[
 augroup location
     autocmd!
-
     autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal! g'\"" | endif
 augroup END
 ]])
 
--- lua
-function init_lua()
-    print("lua!")
-    vim.bo.textwidth = 100
-end
-
+-- filetype detection
 vim.cmd([[
-augroup lua
+augroup extra_filetypedetect
     autocmd!
-    autocmd BufReadPost *.lua :lua init_lua()
+    autocmd BufNewFile,BufRead *.cabal set filetype=cabal
+    autocmd BufNewFile,BufRead *.cry set filetype=cryptol
+    autocmd BufNewFile,BufRead *.hsc set filetype=haskell
+    autocmd BufNewFile,BufRead *.idr set filetype=idris
+    autocmd BufNewFile,BufRead *.{ll,lll,llo} set filetype=llvm
+    autocmd BufNewFile,BufRead *.ott set filetype=ott
+    autocmd BufNewFile,BufRead *.tex set filetype=tex
 augroup END
 ]])
 
