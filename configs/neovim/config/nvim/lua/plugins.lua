@@ -1,13 +1,12 @@
 
 -- Bootstrap packer {{{
-local execute = vim.api.nvim_command
 local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) then
     fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-    execute 'packadd packer.nvim'
+    vim.cmd('packadd packer.nvim')
 end
 -- }}}
 
@@ -40,8 +39,6 @@ return require 'packer'.startup(function(use)
 
     use 'nvim-treesitter/nvim-treesitter'
     use 'neovim/nvim-lspconfig'
-
-    use 'benmills/vimux'
 
     use 'tpope/vim-repeat'
     use 'tpope/vim-fugitive'
