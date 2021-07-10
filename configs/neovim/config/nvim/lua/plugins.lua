@@ -16,7 +16,8 @@ return require 'packer'.startup(function(use)
 
     use { 'elliottt/two-trucs', run = 'make release' }
 
-    use 'junegunn/fzf'
+    use { 'junegunn/fzf', run = './install --bin' }
+
     use 'junegunn/fzf.vim'
 
     use 'junegunn/seoul256.vim'
