@@ -48,9 +48,15 @@ return {
           },
         }
 
-        lsp.clangd.setup {
+        -- when clangd is present in the bazel sandbox, prefer that
+        local clangd_opts = {
             on_attach = mappings.lsp_attach,
         }
+        local clangd_path = vim.fn.glob('bazel-*/external/llvm_toolchain*/bin/clangd')
+        if clangd_path ~= "" then
+            clangd_opts.cmd = { clangd_path, "--background-index" }
+        end
+        lsp.clangd.setup(clangd_opts)
 
         lsp.rust_analyzer.setup {
             on_attach = mappings.lsp_attach,
