@@ -61,5 +61,28 @@ return {
         lsp.rust_analyzer.setup {
             on_attach = mappings.lsp_attach,
         }
+
+        if vim.fn.glob("scripts/bin/typecheck") ~= "" then
+            -- setup sorbet
+            local configs = require 'lspconfig/configs'
+            local util = require 'lspconfig/util'
+
+            local root_pattern = util.root_pattern('.git', 'Gemfile')
+
+            configs.sorbet = {
+                default_config = {
+                    cmd = { "pay", "exec", "scripts/bin/typecheck", "--lsp" },
+                    filetypes = { "ruby" },
+                    root_dir = function(name)
+                        return root_pattern(name)
+                    end,
+                }
+            }
+
+            lsp.sorbet.setup {
+                on_attach = mappings.lsp_attach,
+            }
+        end
+
     end
 }
