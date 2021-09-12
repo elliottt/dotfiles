@@ -2,7 +2,7 @@
 # Fall back on using fzf from the vim plugin if FZF_HOME wasn't set by
 # host-specific config.
 if [ -z "$FZF_HOME" ]; then
-  export FZF_HOME="$HOME/.config/nvim/bundle/fzf"
+  export FZF_HOME="$HOME/.local/share/nvim/site/pack/packer/start/fzf"
 fi
 
 if [ -d "$FZF_HOME" ]; then
