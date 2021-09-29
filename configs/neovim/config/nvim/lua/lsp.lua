@@ -32,6 +32,10 @@ require 'vimway-lsp-diag'.init{
     buf_clients_only = true,
 }
 
+require 'lspsaga'.init_lsp_saga {
+    border_style = "round",
+}
+
 return {
     setup = function(mappings)
         local home = vim.fn.environ().HOME

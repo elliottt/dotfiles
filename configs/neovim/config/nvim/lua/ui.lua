@@ -13,7 +13,7 @@ vim.cmd [[
 ]]
 
 -- tabline
-vim.g.tabline_show_devicons = false
+-- vim.g.tabline_show_devicons = false
 tabline.setup { enable = false }
 
 -- statusline

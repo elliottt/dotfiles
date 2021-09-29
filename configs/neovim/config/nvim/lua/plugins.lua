@@ -24,7 +24,14 @@ return require 'packer'.startup{function(use)
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
     use 'neovim/nvim-lspconfig'
-    use 'onsails/vimway-lsp-diag.nvim'
+    use {
+        'onsails/vimway-lsp-diag.nvim',
+        requires = {'neovim/nvim-lspconfig'},
+    }
+    use {
+        'glepnir/lspsaga.nvim',
+        requires = {'neovim/nvim-lspconfig'},
+    }
 
     use 'tpope/vim-repeat'
     use 'tpope/vim-fugitive'
