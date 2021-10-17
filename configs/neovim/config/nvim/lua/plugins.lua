@@ -36,7 +36,13 @@ return require 'packer'.startup{function(use)
     use 'tpope/vim-repeat'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
-    use 'tpope/vim-commentary'
+
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end,
+    }
 
     use 'mhinz/vim-sayonara'
 
