@@ -25,10 +25,6 @@ return require 'packer'.startup{function(use)
 
     use 'neovim/nvim-lspconfig'
     use {
-        'onsails/vimway-lsp-diag.nvim',
-        requires = {'neovim/nvim-lspconfig'},
-    }
-    use {
         'glepnir/lspsaga.nvim',
         requires = {'neovim/nvim-lspconfig'},
     }

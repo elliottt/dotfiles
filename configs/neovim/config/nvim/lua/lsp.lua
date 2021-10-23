@@ -26,12 +26,6 @@ configs.sorbet = {
     }
 }
 
--- use vimway-lsp-diag to keep the quickfix and locaion lists up to date
-require 'vimway-lsp-diag'.init{
-    debounce_ms = 50,
-    buf_clients_only = true,
-}
-
 require 'lspsaga'.init_lsp_saga {
     border_style = "round",
 }
