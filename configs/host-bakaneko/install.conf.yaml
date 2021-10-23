@@ -5,6 +5,7 @@
 - link:
     ~/.xmodmap: xmodmap
     ~/.xsession: xsession
-    ~/.config:
-      glob: true
-      path: config/*
+    ~/.config/herbstluftwm: config/herbstluftwm
+    ~/.config/i3: config/i3
+    ~/.config/polybar: config/polybar
+    ~/.config/alacritty/host.yml: config/alacritty/host.yml
