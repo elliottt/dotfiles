@@ -50,7 +50,7 @@ return require 'packer'.startup{function(use)
     }
 
     use {
-        'hoob3rt/lualine.nvim',
+        'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true }
     }
 
