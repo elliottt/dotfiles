@@ -3,60 +3,73 @@ local opts = { noremap = true, silent = true }
 
 vim.api.nvim_set_keymap('i', 'jk', '<esc>', opts)
 
--- fzf
-vim.api.nvim_set_keymap('n', '<leader>f', '<cmd>Files<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Tags<cr>', opts)
-vim.api.nvim_set_keymap('n', '<leader>b', '<cmd>Buffers<cr>', opts)
+local wk = require 'which-key'
 
--- fugitive
-vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>Git<cr>', opts)
+wk.register({
+    ['jk'] = { '<esc>', 'Escape shortcut' },
+}, {
+    mode = 'i',
+    silent = true,
+})
 
--- clear highlighting
-vim.api.nvim_set_keymap('n', '<leader>h', '<cmd>noh<cr>', opts)
+wk.register({
+    -- fzf
+    ['<leader>b'] = { '<cmd>Buffers<cr>', 'Buffers' },
+    ['<leader>f'] = { '<cmd>Files<cr>', 'Files' },
+    ['<leader>t'] = { '<cmd>Tags<cr>', 'Tags' },
 
--- buffer navigation
-vim.api.nvim_set_keymap('n', '<c-n>', '<cmd>bnext<cr>', opts)
-vim.api.nvim_set_keymap('n', '<c-p>', '<cmd>bprevious<cr>', opts)
+    -- git
+    ['<leader>g'] = { '<cmd>Git<cr>', 'Git' },
 
--- buffer closeing
-vim.api.nvim_set_keymap('n', '<c-d>', '<cmd>Sayonara<cr>', opts)
+    -- text operations
+    ['<leader>U'] = { 'gUaw', 'Uppercase word' },
+    ['<leader>u'] = { 'guaw', 'Lowercase word' },
 
--- toggle trailing space
-vim.api.nvim_set_keymap('n', '<leader>s', '<cmd>set nolist! paste! number!<cr>', opts)
+    -- misc
+    ['<leader>h'] = { '<cmd>noh<cr>', 'Clear highlighting' },
+    ['<leader>p'] = { '<cmd>set nolist! paste! number!<cr>', 'Toggle paste mode' },
 
--- list navigation
-vim.api.nvim_set_keymap('n', '[q', '<cmd>cprev<cr>', opts)
-vim.api.nvim_set_keymap('n', ']q', '<cmd>cnext<cr>', opts)
-vim.api.nvim_set_keymap('n', '[l', '<cmd>lprev<cr>', opts)
-vim.api.nvim_set_keymap('n', ']l', '<cmd>lnext<cr>', opts)
+    -- buffer management
+    ['<c-n>'] = { '<cmd>bnext<cr>', 'Next buffer' },
+    ['<c-p>'] = { '<cmd>bprevious<cr>', 'Previous buffer' },
+    ['<c-d>'] = { '<cmd>Sayonara<cr>', 'Close buffer' },
+
+    -- list navigation
+    ['[q'] = { '<cmd>cprev<cr>', 'Previous quickfix item' },
+    [']q'] = { '<cmd>cnext<cr>', 'Next quickfix item' },
+    ['[l'] = { '<cmd>lprev<cr>', 'Previous location item' },
+    [']l'] = { '<cmd>lnext<cr>', 'Next location item' },
+}, {
+    mode = 'n',
+    silent = true,
+})
 
 -- stop entering ex mode
 vim.api.nvim_set_keymap('n', 'Q', '<nop>', opts)
-
--- sort the visual selection
-vim.api.nvim_set_keymap('v', '<leader>s', '<cmd>sort<cr>', opts)
-
--- case changing
-vim.api.nvim_set_keymap('n', '<leader>U', 'gUaw', opts)
-vim.api.nvim_set_keymap('n', '<leader>u', 'guaw', opts)
 
 -- lsp
 local function lsp_attach(_, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua require "lspsaga.hover".render_hover_doc()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', '<cmd>lua require "lspsaga.signaturehelp".signature_help()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>f', '<cmd>lua vim.lsp.buf.formatting()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>a', '<cmd>lua require "lspsaga.codeaction".code_action()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>rn', '<cmd>lua require "lspsaga.rename".rename()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>k', '<cmd>lua require "lspsaga.diagnostic".show_line_diagnostics()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<localleader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', opts)
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', opts)
+    wk.register({
+        ['<localleader>f'] = { '<cmd>lua vim.lsp.buf.formatting()<cr>', 'Format' },
+        ['<localleader>a'] = { '<cmd>lua require "lspsaga.codeaction".code_action()<cr>', 'Code actions' },
+        ['<localleader>rn'] = { '<cmd>lua require "lspsaga.rename".rename()<cr>', 'Rename' },
+        ['<localleader>k'] = { '<cmd>lua require "lspsaga.diagnostic".show_line_diagnostics()<cr>', 'Line diagnostics' },
+        ['<localleader>q'] = { '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', 'Diagnostics' },
+        ['K'] = { '<cmd>lua require "lspsaga.hover".render_hover_doc()<cr>', 'Hover' },
+        ['gs'] = { '<cmd>lua require "lspsaga.signaturehelp".signature_help()<cr>', 'Signature help' },
+        ['gd'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'Go to definition' },
+        ['gD'] = { '<cmd>lua vim.lsp.buf.declaration()<cr>', 'Go to declaration' },
+        ['gi'] = { '<cmd>lua vim.lsp.buf.implementation()<cr>', 'Go to implementation' },
+        ['gr'] = { '<cmd>lua vim.lsp.buf.references()<cr>', 'Find all references' },
+        ['[d'] = { '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>', 'Previous diagnostic' },
+        [']d'] = { '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>', 'Next diagnostic' },
+    }, {
+        buffer = bufnr,
+        mode = 'n',
+        silent = true,
+    })
 end
 
 return { lsp_attach = lsp_attach }

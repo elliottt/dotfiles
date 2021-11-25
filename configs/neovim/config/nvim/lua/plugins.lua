@@ -34,6 +34,13 @@ return require 'packer'.startup{function(use)
     use 'tpope/vim-surround'
 
     use {
+        'folke/which-key.nvim',
+        config = function()
+            require 'which-key'.setup()
+        end
+    }
+
+    use {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()

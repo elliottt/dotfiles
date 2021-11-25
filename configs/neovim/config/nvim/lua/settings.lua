@@ -14,6 +14,9 @@ vim.o.incsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- slightly faster command timeout
+vim.o.timeoutlen = 500
+
 -- window settings
 vim.o.scrolloff = 3
 vim.o.ruler = true
