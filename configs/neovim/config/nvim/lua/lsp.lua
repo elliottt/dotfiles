@@ -11,21 +11,6 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     }
 )
 
--- setup sorbet
-local configs = require 'lspconfig/configs'
-local util = require 'lspconfig/util'
-
-configs.sorbet = {
-    default_config = {
-        cmd = { "srb", "tc", "--lsp" },
-        filetypes = { "ruby" },
-
-        -- The order here is important for not accidentally walking up to the root of the sorbet
-        -- repo
-        root_dir = util.root_pattern('Gemfile', '.git'),
-    }
-}
-
 require 'lspsaga'.init_lsp_saga {
     border_style = "round",
 }
