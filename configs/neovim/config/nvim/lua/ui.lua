@@ -7,6 +7,8 @@ local lualine = require 'lualine'
 -- colors
 vim.o.termguicolors = true
 vim.cmd [[
+    syntax enable
+
     let g:sonokai_transparent_background = 1
     let g:sonokai_style = 'atlantis'
     colorscheme sonokai
