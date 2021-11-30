@@ -62,9 +62,15 @@ return {
         }
         local clangd_path = vim.fn.glob('bazel-*/external/llvm_toolchain*/bin/clangd')
         if clangd_path ~= "" then
-            clangd_opts.cmd = { clangd_path, "--background-index" }
+            lsp.clangd.setup {
+                on_attach = mappings.lsp_attach,
+                cmd = { clangd_path, "--background-index" },
+            }
+        elseif vim.fn.executable('clangd') == 1 then
+            lsp.clangd.setup {
+                on_attach = mappings.lsp_attach,
+            }
         end
-        lsp.clangd.setup(clangd_opts)
 
         -- sorbet config
         local sorbet_opts = {
