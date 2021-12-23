@@ -47,6 +47,42 @@ wk.register({
 -- stop entering ex mode
 vim.api.nvim_set_keymap('n', 'Q', '<nop>', opts)
 
+-- vsnip mappings
+local function vsnip_map(key, cmd)
+    local options = {
+        expr = true,
+        silent = true,
+    }
+    vim.api.nvim_set_keymap('i', key, cmd, options)
+    vim.api.nvim_set_keymap('s', key, cmd, options)
+end
+vsnip_map('<tab>',   [[vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>']])
+vsnip_map('<S-Tab>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']])
+
+-- nvim-cmp mappings
+local cmp = require 'cmp'
+cmp.setup{
+    completion = {
+        -- only trigger completion when c-space is pressed
+        autocomplete = false,
+    },
+
+    snippet = {
+        expand = function(args)
+            vim.fn['vsnip#anonymous'](args.body)
+        end
+    },
+
+    mapping = {
+        ['<c-space>'] = cmp.mapping(cmp.mapping.complete(), { 'i' }),
+        ['<cr>'] = cmp.mapping.confirm{ select = true },
+    },
+
+    sources = cmp.config.sources{
+        { name = 'nvim_lsp' },
+    },
+}
+
 -- lsp
 local function lsp_attach(_, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')

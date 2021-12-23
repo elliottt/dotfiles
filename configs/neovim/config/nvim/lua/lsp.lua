@@ -15,6 +15,8 @@ require 'lspsaga'.init_lsp_saga {
     border_style = "round",
 }
 
+local capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 return {
     setup = function(mappings)
         local home = vim.fn.environ().HOME
@@ -31,6 +33,7 @@ return {
             lsp.sumneko_lua.setup {
               on_attach = mappings.lsp_attach,
               cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+              capabilities = capabilities,
               settings = {
                 Lua = {
                   runtime = {
@@ -57,24 +60,24 @@ return {
         end
 
         -- clangd config
-        local clangd_opts = {
-            on_attach = mappings.lsp_attach,
-        }
         local clangd_path = vim.fn.glob('bazel-*/external/llvm_toolchain*/bin/clangd')
         if clangd_path ~= "" then
             lsp.clangd.setup {
                 on_attach = mappings.lsp_attach,
                 cmd = { clangd_path, "--background-index" },
+                capabilities = capabilities,
             }
         elseif vim.fn.executable('clangd') == 1 then
             lsp.clangd.setup {
                 on_attach = mappings.lsp_attach,
+                capabilities = capabilities,
             }
         end
 
         -- sorbet config
         local sorbet_opts = {
             on_attach = mappings.lsp_attach,
+            capabilities = capabilities,
         }
 
         if vim.fn.glob("scripts/bin/typecheck") ~= "" then
@@ -92,6 +95,7 @@ return {
         -- rust-analyzer config
         lsp.rust_analyzer.setup {
             on_attach = mappings.lsp_attach,
+            capabilities = capabilities,
         }
 
     end

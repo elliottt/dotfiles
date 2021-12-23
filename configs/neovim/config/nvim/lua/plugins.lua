@@ -1,3 +1,4 @@
+-- vim: foldmethod=marker
 
 -- Bootstrap packer {{{
 local fn = vim.fn
@@ -14,19 +15,17 @@ return require 'packer'.startup{function(use)
 
     use 'wbthomason/packer.nvim'
 
-    use { 'elliottt/two-trucs', run = 'make release' }
-
-    use { 'junegunn/fzf', run = './install --bin' }
-
-    use 'junegunn/fzf.vim'
-
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
-    use 'neovim/nvim-lspconfig'
+    -- Utility plugins {{{
     use {
-        'glepnir/lspsaga.nvim',
-        requires = {'neovim/nvim-lspconfig'},
+        'elliottt/two-trucs',
+        run = 'make release'
     }
+
+    use {
+        'junegunn/fzf',
+        run = './install --bin'
+    }
+    use 'junegunn/fzf.vim'
 
     use 'tpope/vim-repeat'
     use 'tpope/vim-fugitive'
@@ -47,8 +46,31 @@ return require 'packer'.startup{function(use)
     }
 
     use 'mhinz/vim-sayonara'
+    -- }}}
 
-    -- colorschemes
+    -- Treesitter {{{
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+    -- }}}
+
+    -- LSP {{{
+    use 'neovim/nvim-lspconfig'
+    use {
+        'tami5/lspsaga.nvim',
+        requires = { 'neovim/nvim-lspconfig' },
+    }
+    -- }}}
+
+    -- Completion {{{
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
+    -- }}}
+
+    -- Colorschemes {{{
     use {
         'rebelot/kanagawa.nvim',
         disable = false,
@@ -72,10 +94,12 @@ return require 'packer'.startup{function(use)
             ]])
         end,
     }
+    -- }}}
 
+    -- Statuslines {{{
     use {
         'kdheepak/tabline.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true },
+        requires = {{'kyazdani42/nvim-web-devicons', opt = true }},
         after = {'sonokai', 'kanagawa.nvim'},
         config = function()
             require 'tabline'.setup { enable = false }
@@ -84,7 +108,7 @@ return require 'packer'.startup{function(use)
 
     use {
         'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true },
+        requires = {{ 'kyazdani42/nvim-web-devicons', opt = true }},
         after = {'tabline.nvim'},
         config = function()
             local tabline = require('tabline')
@@ -104,6 +128,7 @@ return require 'packer'.startup{function(use)
             }
         end,
     }
+    -- }}}
 
 end,
 config = {
