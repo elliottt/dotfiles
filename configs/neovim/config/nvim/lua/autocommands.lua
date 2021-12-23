@@ -9,7 +9,6 @@ augroup reloading
     autocmd BufWritePost plugins.lua source <afile> | PackerSync
     autocmd BufWritePost settings.lua source <afile>
     autocmd BufWritePost treesitter.lua source <afile>
-    autocmd BufWritePost ui.lua source <afile>
 augroup END
 ]])
 

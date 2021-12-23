@@ -52,3 +52,9 @@ vim.o.hidden = true
 
 -- search upwards for tagfiles
 vim.o.tags = './tags,tags;'
+
+-- colors
+vim.o.termguicolors = true
+vim.cmd([[
+    syntax enable
+]])

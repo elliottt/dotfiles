@@ -20,7 +20,6 @@ return require 'packer'.startup{function(use)
 
     use 'junegunn/fzf.vim'
 
-
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
     use 'neovim/nvim-lspconfig'
@@ -49,21 +48,66 @@ return require 'packer'.startup{function(use)
 
     use 'mhinz/vim-sayonara'
 
-    use 'sainnhe/sonokai'
+    -- colorschemes
+    use {
+        'rebelot/kanagawa.nvim',
+        disable = false,
+        config = function()
+            require 'kanagawa'.setup{ transparent = true }
+            vim.cmd([[
+                colorscheme kanagawa
+            ]])
+        end
+    }
+
+    use {
+        'sainnhe/sonokai',
+        disable = true,
+        config = function()
+            print('loading config')
+            vim.cmd([[
+                let g:sonokai_transparent_background = 1
+                let g:sonokai_style = 'atlantis'
+                colorscheme sonokai
+            ]])
+        end,
+    }
 
     use {
         'kdheepak/tabline.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true }
+        requires = {'kyazdani42/nvim-web-devicons', opt = true },
+        after = {'sonokai', 'kanagawa.nvim'},
+        config = function()
+            require 'tabline'.setup { enable = false }
+        end,
     }
 
     use {
         'nvim-lualine/lualine.nvim',
-        requires = {'kyazdani42/nvim-web-devicons', opt = true }
+        requires = {'kyazdani42/nvim-web-devicons', opt = true },
+        after = {'tabline.nvim'},
+        config = function()
+            local tabline = require('tabline')
+            require 'lualine'.setup {
+                options = {
+                    icons_enabled = false,
+                    theme = 'seoul256',
+                },
+                tabline = {
+                    lualine_a = {},
+                    lualine_b = {},
+                    lualine_c = { tabline.tabline_buffers },
+                    lualine_x = { tabline.tabline_tabs },
+                    lualine_y = {},
+                    lualine_z = {},
+                }
+            }
+        end,
     }
 
 end,
 config = {
     display = {
-        open_fn = require('packer.util').float,
-    },
+        open_fn = require 'packer.util'.float,
+    }
 }}
