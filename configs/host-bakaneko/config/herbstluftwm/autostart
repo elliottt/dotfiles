@@ -28,7 +28,8 @@ hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-Return spawn "${TERMINAL:-xterm}"
-hc keybind $Mod-d spawn rofi -theme "~/.config/herbstluftwm/rofi.rasi" -show run
+hc keybind $Mod-d spawn rofi -theme "$HOME/.config/herbstluftwm/rofi.rasi" -show run
+hc keybind $Mod-n spawn "$HOME/.config/herbstluftwm/rofi-wifi-menu.sh"
 
 hc keybind $Mod-Control-q spawn i3lock-fancy
 
