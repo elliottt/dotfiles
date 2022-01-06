@@ -82,7 +82,14 @@ return {
 
         if vim.fn.glob("scripts/bin/typecheck") ~= "" then
             -- use 'pay exec' when in pay-server
-            sorbet_opts.cmd = { "pay", "exec", "scripts/bin/typecheck", "--lsp" }
+            sorbet_opts.cmd = {
+                "scripts/dev_productivity/while_pay_up_connected.sh",
+                "pay",
+                "exec",
+                "scripts/bin/typecheck",
+                "--lsp",
+                "--enable-all-experimental-lsp-features",
+            }
         else
             local local_sorbet_build = vim.fn.glob(home.."/stripe/sorbet/bazel-bin/main/sorbet")
             if local_sorbet_build ~= "" then
