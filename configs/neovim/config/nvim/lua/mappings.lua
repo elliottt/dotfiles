@@ -74,7 +74,7 @@ cmp.setup{
     },
 
     mapping = {
-        ['<c-n>'] = cmp.mapping(cmp.mapping.complete(), { 'i' }),
+        ['<c-f>'] = cmp.mapping(cmp.mapping.complete(), { 'i' }),
         ['<cr>'] = cmp.mapping.confirm{ select = true },
     },
 
