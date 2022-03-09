@@ -105,5 +105,12 @@ return {
             capabilities = capabilities,
         }
 
+        -- typescript config
+        if vim.fn.executable("typescript-language-server") == 1 then
+            lsp.tsserver.setup {
+                on_attach = mappings.lsp_attach,
+            }
+        end
+
     end
 }
