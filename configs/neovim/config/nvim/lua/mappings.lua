@@ -76,6 +76,8 @@ cmp.setup{
     mapping = {
         ['<c-f>'] = cmp.mapping(cmp.mapping.complete(), { 'i' }),
         ['<cr>'] = cmp.mapping.confirm{ select = true },
+        ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item{ behavior = cmp.SelectBehavior.Select }, {'i'}),
+        ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item{ behavior = cmp.SelectBehavior.Select }, {'i'}),
     },
 
     sources = cmp.config.sources{
