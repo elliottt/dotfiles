@@ -132,6 +132,13 @@ return require 'packer'.startup{function(use)
     }
     -- }}}
 
+    use {
+        'jakewvincent/mkdnflow.nvim',
+        config = function()
+            require 'mkdnflow'.setup {}
+        end,
+    }
+
 end,
 config = {
     display = {
