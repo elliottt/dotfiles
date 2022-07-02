@@ -1,4 +1,6 @@
 
+local wk = require 'which-key'
+
 function augroup(name, body)
     vim.api.nvim_create_augroup(name, { clear = true })
 
@@ -53,7 +55,25 @@ augroup("extra_filetypedetect", function(au)
     filetype("*.{ll,lll,llo}", "llvm")
     filetype("*.ott", "ott")
     filetype("*.tex", "tex")
-    filetype("*.isle", "lisp")
+
+    au({"BufNewFile", "BufRead"}, {
+        pattern = "*.isle",
+        command = "set filetype=lisp et",
+    })
+
+    au({"BufNewFile", "BufRead"}, {
+        pattern = "*.md",
+        callback = function()
+            wk.register({
+                ["<localleader>f"] = { "<cmd>TTSort<cr>", "Format" },
+                ["<localleader>n"] = { "<cmd>TTNext<cr>", "New TODO group" },
+            }, {
+                mode = "n",
+                buffer = vim.api.nvim_get_current_buf(),
+                noremap = true,
+            })
+        end,
+    })
 end)
 
 return nil

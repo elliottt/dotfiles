@@ -1,0 +1,10 @@
+{
+  "Date": {
+    "prefix": ["date"],
+    "body": ["${VIM:strftime(\"%Y-%m-%d\")}"]
+  },
+  "Todo": {
+    "prefix": ["to", "todo"],
+    "body": ["* [ ] "]
+  }
+}

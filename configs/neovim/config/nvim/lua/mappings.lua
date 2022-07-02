@@ -56,7 +56,8 @@ local function vsnip_map(key, cmd)
     vim.api.nvim_set_keymap('i', key, cmd, options)
     vim.api.nvim_set_keymap('s', key, cmd, options)
 end
-vsnip_map('<tab>',   [[vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>']])
+vsnip_map('<c-j>', [[vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<c-j>']])
+vsnip_map('<tab>',[[vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>']])
 vsnip_map('<S-Tab>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']])
 
 -- nvim-cmp mappings
