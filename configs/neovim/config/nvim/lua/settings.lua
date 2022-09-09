@@ -1,8 +1,8 @@
 
-vim.cmd([[
-    let mapleader = ' '
-    let maplocalleader = ';'
-]])
+vim.cmd [[
+    let mapleader = "\<space>"
+    let maplocalleader = "\<bs>"
+]]
 
 vim.o.title = true
 
