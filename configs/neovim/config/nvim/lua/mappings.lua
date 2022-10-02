@@ -7,12 +7,9 @@ local wk = require 'which-key'
 
 wk.register({
     ['jk'] = { '<esc>', 'Escape shortcut' },
-}, {
-    mode = 'i',
-    silent = true,
-})
+}, { mode = 'i' })
 
-wk.register({
+wk.register{
     -- fzf
     ['<leader>b'] = { '<cmd>Buffers<cr>', 'Buffers' },
     ['<leader>f'] = { '<cmd>Files<cr>', 'Files' },
@@ -39,13 +36,11 @@ wk.register({
     [']q'] = { '<cmd>cnext<cr>', 'Next quickfix item' },
     ['[l'] = { '<cmd>lprev<cr>', 'Previous location item' },
     [']l'] = { '<cmd>lnext<cr>', 'Next location item' },
-}, {
-    mode = 'n',
-    silent = true,
-})
 
--- stop entering ex mode
-vim.api.nvim_set_keymap('n', 'Q', '<nop>', opts)
+    -- leap
+    ['s'] = { '<Plug>(leap-forward)', 'Leap forward' },
+    ['S'] = { '<Plug>(leap-backward)', 'Leap backward' },
+}
 
 -- vsnip mappings
 local function vsnip_map(key, cmd)

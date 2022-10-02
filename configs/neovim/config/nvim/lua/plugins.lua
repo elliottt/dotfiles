@@ -41,13 +41,18 @@ return require 'packer'.startup{function(use)
     use {
         'numToStr/Comment.nvim',
         config = function()
-            require('Comment').setup()
+            require 'Comment'.setup()
         end,
     }
 
     use 'mhinz/vim-sayonara'
 
-    use 'ggandor/lightspeed.nvim'
+    use {
+        'ggandor/leap.nvim',
+        config = function()
+            require 'leap'.setup{}
+        end,
+    }
     -- }}}
 
     -- Treesitter {{{
