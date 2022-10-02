@@ -59,10 +59,6 @@ return require 'packer'.startup{function(use)
 
     -- LSP {{{
     use 'neovim/nvim-lspconfig'
-    use {
-        'tami5/lspsaga.nvim',
-        requires = { 'neovim/nvim-lspconfig' },
-    }
     -- }}}
 
     -- Completion {{{

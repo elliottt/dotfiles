@@ -11,8 +11,71 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     }
 )
 
-require 'lspsaga'.init_lsp_saga {
-    border_style = "round",
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = 'rounded',
+})
+
+-- Wrapper functions to centralize lsp visual config.
+LspUtil = {
+    format = function()
+        return vim.lsp.buf.format()
+    end,
+
+    code_action = function()
+        return vim.lsp.buf.code_action()
+    end,
+
+    rename = function()
+        return vim.lsp.buf.rename()
+    end,
+
+    hover = function()
+        return vim.lsp.buf.hover()
+    end,
+
+    definition = function()
+        return vim.lsp.buf.definition()
+    end,
+
+    declaration = function()
+        return vim.lsp.buf.declaration()
+    end,
+
+    implementation = function()
+        return vim.lsp.buf.implementation()
+    end,
+
+    references = function()
+        return vim.lsp.buf.references()
+    end,
+
+    diagnostic = {
+        open = function()
+            return vim.diagnostic.open_float{
+                border = 'rounded',
+            }
+        end,
+
+        quickfix = function()
+            return vim.diagnostic.setloclist()
+        end,
+
+        next = function()
+            return vim.diagnostic.goto_next{
+                float = {
+                    border = 'rounded',
+                },
+            }
+        end,
+
+        prev = function()
+            return vim.diagnostic.goto_prev{
+                float = {
+                    border = 'rounded',
+                },
+            }
+        end,
+    },
 }
 
 local capabilities = require 'cmp_nvim_lsp'.update_capabilities(vim.lsp.protocol.make_client_capabilities())
