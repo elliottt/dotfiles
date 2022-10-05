@@ -1,0 +1,9 @@
+- defaults:
+    link:
+      relink: true
+
+- create:
+  - ~/.config/kitty
+
+- link:
+    ~/.config/kitty/kitty.conf: kitty.conf
