@@ -1,0 +1,6 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.config/zsh_custom/nvm.zsh: nvm.zsh
