@@ -145,7 +145,11 @@ return require 'packer'.startup{function(use)
     use {
         'jakewvincent/mkdnflow.nvim',
         config = function()
-            require 'mkdnflow'.setup {}
+            require 'mkdnflow'.setup {
+                to_do = {
+                    symbols = { ' ', '-', 'x' }
+                }
+            }
         end,
     }
 
