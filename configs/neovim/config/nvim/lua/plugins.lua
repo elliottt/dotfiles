@@ -58,7 +58,16 @@ return require 'packer'.startup{function(use)
     -- Treesitter {{{
     use {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        run = ':TSUpdate',
+        config = function()
+            require 'nvim-treesitter.configs'.setup {
+                ensure_installed = { "bash", "c", "cpp", "javascript", "lua", "ruby", "rust", "typescript" },
+                highlight = {
+                    enable = true,
+                    disable = { "javscript", "cpp" },
+                },
+            }
+        end,
     }
     -- }}}
 
