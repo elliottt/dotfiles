@@ -153,6 +153,17 @@ return require 'packer'.startup{function(use)
         end,
     }
 
+    use {
+        'stevearc/dressing.nvim',
+        config = function()
+            require 'dressing'.setup{
+                select = {
+                    backend = { 'fzf', 'builtin' },
+                }
+            }
+        end,
+    }
+
 end,
 config = {
     display = {
