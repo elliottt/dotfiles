@@ -6,8 +6,13 @@
     ~/.config/zsh_custom:
       glob: true
       path: config/zsh_custom/*.zsh
-    ~/.config/zsh_custom/themes/agkozak: config/zsh_custom/themes/agkozak
-    ~/.config/zsh_custom/themes/agkozak.zsh-theme: config/zsh_custom/themes/agkozak.zsh-theme
+      create: true
+    ~/.config/zsh_custom/themes/agkozak:
+      path: config/zsh_custom/themes/agkozak
+      create: true
+    ~/.config/zsh_custom/themes/agkozak.zsh-theme:
+      path: config/zsh_custom/themes/agkozak.zsh-theme
+      create: true
     ~/.oh-my-zsh: oh-my-zsh
     ~/.zprofile: zprofile
     ~/.zshenv: zshenv

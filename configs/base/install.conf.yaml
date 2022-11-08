@@ -6,5 +6,6 @@
     ~/.local/bin:
       glob: true
       path: local/bin/*
+      create: true
     ~/.vsnip: snippets
     ~/.config/git: config/git
