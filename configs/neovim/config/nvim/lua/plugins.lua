@@ -1,6 +1,6 @@
 -- vim: foldmethod=marker
 
--- Bootstrap packer {{{
+-- Bootstrap packer
 local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. '/site/pack/packer/start/packer.nvim'
@@ -9,13 +9,12 @@ if fn.empty(fn.glob(install_path)) then
     fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
     vim.cmd('packadd packer.nvim')
 end
--- }}}
 
 return require 'packer'.startup{function(use)
 
     use 'wbthomason/packer.nvim'
 
-    -- Utility plugins {{{
+    -- Utility plugins
     use {
         'elliottt/two-trucs',
         run = 'make release'
@@ -53,9 +52,8 @@ return require 'packer'.startup{function(use)
             require 'leap'.setup{}
         end,
     }
-    -- }}}
 
-    -- Treesitter {{{
+    -- Treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
@@ -64,25 +62,21 @@ return require 'packer'.startup{function(use)
                 ensure_installed = { "bash", "c", "cpp", "javascript", "lua", "ruby", "rust", "typescript" },
                 highlight = {
                     enable = true,
-                    disable = { "javscript", "cpp" },
                 },
             }
         end,
     }
-    -- }}}
 
-    -- LSP {{{
+    -- LSP
     use 'neovim/nvim-lspconfig'
-    -- }}}
 
-    -- Completion {{{
+    -- Completion
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
-    -- }}}
 
-    -- Colorschemes {{{
+    -- Colorschemes
     use {
         'rebelot/kanagawa.nvim',
         disable = false,
@@ -106,9 +100,8 @@ return require 'packer'.startup{function(use)
             ]])
         end,
     }
-    -- }}}
 
-    -- Statuslines {{{
+    -- Statuslines
     use {
         'kdheepak/tabline.nvim',
         requires = {{'kyazdani42/nvim-web-devicons', opt = true }},
@@ -140,7 +133,6 @@ return require 'packer'.startup{function(use)
             }
         end,
     }
-    -- }}}
 
     use {
         'jakewvincent/mkdnflow.nvim',
