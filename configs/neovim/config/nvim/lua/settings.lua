@@ -1,9 +1,4 @@
 
-vim.cmd [[
-    let mapleader = "\<space>"
-    let maplocalleader = "\<bs>"
-]]
-
 vim.o.title = true
 
 -- allow backspace beyond where insert started
@@ -55,6 +50,3 @@ vim.o.tags = './tags,tags;'
 
 -- colors
 vim.o.termguicolors = true
-vim.cmd([[
-    syntax enable
-]])

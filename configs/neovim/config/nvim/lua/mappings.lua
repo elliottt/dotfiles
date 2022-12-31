@@ -1,7 +1,6 @@
 
-local opts = { noremap = true, silent = true }
-
-vim.api.nvim_set_keymap('i', 'jk', '<esc>', opts)
+vim.g.mapleader = vim.api.nvim_replace_termcodes('<Space>', false, false, true)
+vim.g.maplocalleader = vim.api.nvim_replace_termcodes('<BS>', false, false, true)
 
 local wk = require 'which-key'
 
@@ -43,23 +42,29 @@ wk.register{
 }
 
 -- vsnip mappings
-local function vsnip_map(key, cmd)
-    local options = {
-        expr = true,
-        silent = true,
-    }
-    vim.api.nvim_set_keymap('i', key, cmd, options)
-    vim.api.nvim_set_keymap('s', key, cmd, options)
-end
-vsnip_map('<c-j>', [[vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<c-j>']])
-vsnip_map('<tab>',[[vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>']])
-vsnip_map('<S-Tab>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']])
+local vsnip_keymaps = {
+    ['<c-j>'] = { [[vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<c-j>']], "Expand snippet" },
+    ['<tab>'] = { [[vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>']] },
+    ['<S-Tab>'] = { [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']] },
+}
+wk.register(vsnip_keymaps, {
+    mode = 'i',
+    noremap = true,
+    expr = true,
+    silent = true,
+})
+wk.register(vsnip_keymaps, {
+    mode = 's',
+    noremap = true,
+    expr = true,
+    silent = true,
+})
 
 -- nvim-cmp mappings
 local cmp = require 'cmp'
 cmp.setup{
     completion = {
-        -- only trigger completion when c-space is pressed
+        -- only trigger completion when c-f is pressed
         autocomplete = false,
     },
 

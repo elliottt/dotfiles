@@ -102,6 +102,8 @@ return require 'packer'.startup{function(use)
     }
 
     -- Statuslines
+    use 'kyazdani42/nvim-web-devicons'
+
     use {
         'kdheepak/tabline.nvim',
         requires = {{'kyazdani42/nvim-web-devicons', opt = true }},
