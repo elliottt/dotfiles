@@ -7,7 +7,7 @@ local install_path = fn.stdpath("data") .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) then
     fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd('packadd packer.nvim')
+    vim.cmd.packadd('packer.nvim')
 end
 
 return require 'packer'.startup{function(use)
@@ -59,7 +59,17 @@ return require 'packer'.startup{function(use)
         run = ':TSUpdate',
         config = function()
             require 'nvim-treesitter.configs'.setup {
-                ensure_installed = { "bash", "c", "cpp", "javascript", "lua", "ruby", "rust", "typescript" },
+                ensure_installed = {
+                    "bash",
+                    "c",
+                    "cpp",
+                    "javascript",
+                    "lua",
+                    "ruby",
+                    "rust",
+                    "typescript",
+                    "vim",
+                },
                 highlight = {
                     enable = true,
                 },
@@ -82,9 +92,7 @@ return require 'packer'.startup{function(use)
         disable = false,
         config = function()
             require 'kanagawa'.setup{ transparent = true }
-            vim.cmd([[
-                colorscheme kanagawa
-            ]])
+            vim.cmd.colorscheme('kanagawa')
         end
     }
 
@@ -92,12 +100,9 @@ return require 'packer'.startup{function(use)
         'sainnhe/sonokai',
         disable = true,
         config = function()
-            print('loading config')
-            vim.cmd([[
-                let g:sonokai_transparent_background = 1
-                let g:sonokai_style = 'atlantis'
-                colorscheme sonokai
-            ]])
+            vim.g.sonokai_transparent_background = 1
+            vim.g.sonokai_style = 'atlantis'
+            vim.cmd.colorscheme('sonokai')
         end,
     }
 
