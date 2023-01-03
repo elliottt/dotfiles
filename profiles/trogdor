@@ -1,5 +1,6 @@
 base
 neovim
+nvm
 zsh
 tmux
 linuxbrew
