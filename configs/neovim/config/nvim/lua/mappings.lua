@@ -8,11 +8,13 @@ wk.register({
     ['jk'] = { '<esc>', 'Escape shortcut' },
 }, { mode = 'i' })
 
+local telescope = require 'telescope.builtin'
+
 wk.register{
     -- fzf
-    ['<leader>b'] = { '<cmd>Buffers<cr>', 'Buffers' },
-    ['<leader>f'] = { '<cmd>Files<cr>', 'Files' },
-    ['<leader>t'] = { '<cmd>Tags<cr>', 'Tags' },
+    ['<leader>b'] = { '<cmd>Telescope buffers<cr>', 'Buffers' },
+    ['<leader>f'] = { '<cmd>Telescope find_files<cr>', 'Files' },
+    ['<leader>t'] = { '<cmd>Telescope tags<cr>', 'Tags' },
 
     -- git
     ['<leader>g'] = { '<cmd>Git<cr>', 'Git' },
@@ -20,6 +22,7 @@ wk.register{
     -- text operations
     ['<leader>U'] = { 'gUaw', 'Uppercase word' },
     ['<leader>u'] = { 'guaw', 'Lowercase word' },
+    ['<leader>l'] = { telescope.live_grep, 'Live grep' },
 
     -- misc
     ['<leader>h'] = { '<cmd>noh<cr>', 'Clear highlighting' },
@@ -95,12 +98,13 @@ local function lsp_attach(_, bufnr)
         ['<localleader>a'] = { '<cmd>lua LspUtil.code_action()<cr>', 'Code actions' },
         ['<localleader>rn'] = { '<cmd>lua LspUtil.rename()<cr>', 'Rename' },
         ['<localleader>k'] = { '<cmd>lua LspUtil.diagnostic.open()<cr>', 'Line diagnostics' },
-        ['<localleader>q'] = { '<cmd>lua LspUtil.diagnostic.quickfix()<cr>', 'Diagnostics' },
+        ['<localleader>d'] = { '<cmd>Telescope lsp_diagnostics<cr>', 'Diagnostics' },
+        ['<localleader>s'] = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document symbols' },
         ['K'] = { '<cmd>lua LspUtil.hover()<cr>', 'Hover' },
-        ['gd'] = { '<cmd>lua LspUtil.definition()<cr>', 'Go to definition' },
-        ['gD'] = { '<cmd>lua LspUtil.declaration()<cr>', 'Go to declaration' },
-        ['gi'] = { '<cmd>lua LspUtil.implementation()<cr>', 'Go to implementation' },
-        ['gr'] = { '<cmd>lua LspUtil.references()<cr>', 'Find all references' },
+        ['gd'] = { '<cmd>Telescope lsp_definitions<cr>', 'Go to definition' },
+        ['gD'] = { '<cmd>Telescope lsp_type_definitions<cr>', 'Go to declaration' },
+        ['gi'] = { '<cmd>Telescope lsp_implementations<cr>', 'Go to implementation' },
+        ['gr'] = { '<cmd>Telescope lsp_references<cr>', 'Find all references' },
         ['[d'] = { '<cmd>lua LspUtil.diagnostic.prev()<cr>', 'Previous diagnostic' },
         [']d'] = { '<cmd>lua LspUtil.diagnostic.next()<cr>', 'Next diagnostic' },
     }, {

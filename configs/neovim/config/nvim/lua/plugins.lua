@@ -26,6 +26,19 @@ return require 'packer'.startup{function(use)
     }
     use 'junegunn/fzf.vim'
 
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { 'nvim-lua/plenary.nvim' },
+        branch = '0.1.x',
+        config = function()
+            require 'telescope'.setup{
+                defaults = {
+                    layout_strategy = 'vertical',
+                }
+            }
+        end,
+    }
+
     use 'tpope/vim-repeat'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-surround'
@@ -157,7 +170,7 @@ return require 'packer'.startup{function(use)
         config = function()
             require 'dressing'.setup{
                 select = {
-                    backend = { 'fzf', 'builtin' },
+                    backend = { 'telescope', 'builtin' },
                 }
             }
         end,
