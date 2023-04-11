@@ -50,3 +50,6 @@ vim.o.tags = './tags,tags;'
 
 -- colors
 vim.o.termguicolors = true
+
+-- i basically only want tab characters in makefiles
+vim.o.expandtab = true
