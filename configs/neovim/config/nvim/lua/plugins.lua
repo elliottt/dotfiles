@@ -27,15 +27,36 @@ return require 'packer'.startup{function(use)
     use 'junegunn/fzf.vim'
 
     use {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        run = [[
+        cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && \
+        cmake --build build --config Release && \
+        cmake --install build --prefix build
+        ]]
+    }
+
+    use {
         'nvim-telescope/telescope.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-fzf-native.nvim',
+        },
         branch = '0.1.x',
         config = function()
             require 'telescope'.setup{
                 defaults = {
                     layout_strategy = 'vertical',
-                }
+                },
+                extensions = {
+                    fzf = {
+                        fuzzy = true,
+                        override_generic_sorter = true,
+                        override_file_sorter = true,
+                        case_mode = "smart_case",
+                    },
+                },
             }
+            require 'telescope'.load_extension('fzf')
         end,
     }
 
