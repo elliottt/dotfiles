@@ -31,9 +31,6 @@ vim.o.lcs = 'tab:>-,trail:.'
 -- spelling
 vim.o.spelllang = 'en_us'
 
--- printing?
-vim.o.printoptions = 'paper:letter'
-
 -- completion options
 vim.o.wildmode = 'longest:full,list:full'
 vim.o.wildmenu = true
