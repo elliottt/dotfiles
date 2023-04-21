@@ -181,7 +181,11 @@ return require 'packer'.startup{function(use)
             require 'mkdnflow'.setup {
                 to_do = {
                     symbols = { ' ', '-', 'x' }
-                }
+                },
+                mappings = {
+                    MkdnFoldSection = false,
+                    MkdnUnfoldSection = false,
+                },
             }
         end,
     }
