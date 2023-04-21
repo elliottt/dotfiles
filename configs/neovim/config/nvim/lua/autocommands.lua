@@ -1,7 +1,7 @@
 
 local wk = require 'which-key'
 
-function augroup(name, body)
+local function augroup(name, body)
     vim.api.nvim_create_augroup(name, { clear = true })
 
     local au = function(event, opts)
