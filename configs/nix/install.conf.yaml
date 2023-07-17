@@ -1,0 +1,7 @@
+- defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.config/home-manager/home.nix:
+      path: home.nix
