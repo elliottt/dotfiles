@@ -4,6 +4,7 @@
 
   imports = [
     ../configs/base/home.nix
+    ../configs/kitty/home.nix
     ../configs/neovim/home.nix
     ../configs/rust.nix
     ../configs/tmux/home.nix
