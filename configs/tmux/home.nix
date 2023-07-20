@@ -5,6 +5,7 @@
   programs.tmux = {
     enable = true;
     sensibleOnTop = false;
+    keyMode = "vi";
   };
 
   home.file = {
