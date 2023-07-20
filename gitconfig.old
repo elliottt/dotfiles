@@ -1,0 +1,6 @@
+[user]
+	name = Trevor Elliott
+	email = telliott@fastly.com
+
+[include]
+	path = ~/.config/git/aliases

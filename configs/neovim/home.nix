@@ -8,6 +8,7 @@
 
   home.file = {
     ".config/nvim".source = ./nvim;
+    ".vsnip".source = ./snippets;
   };
 
   home.sessionVariables = {

@@ -16,7 +16,13 @@
     };
   };
 
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "Trevor Elliott";
+    includes = [
+      { path = ./git/aliases; }
+    ];
+  };
 
   programs.ripgrep.enable = true;
 
