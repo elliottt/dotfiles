@@ -11,7 +11,7 @@ git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
 load_config() {
-  local config_dir="${BASEDIR}/configs/$1"
+  local config_dir="${BASEDIR}/configs-old/$1"
 
   echo "Using config [$1]"
 

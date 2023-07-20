@@ -1,2 +1,0 @@
-EXCLUDES="README.md"
-SYMLINK_DIRS="config/nvim config/zsh_custom/themes/agkozak oh-my-zsh tmux"

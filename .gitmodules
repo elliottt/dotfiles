@@ -2,8 +2,8 @@
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
 [submodule "configs/zsh/config/zsh_custom/themes/agkozak"]
-	path = configs/zsh/config/zsh_custom/themes/agkozak
+	path = configs-old/zsh/config/zsh_custom/themes/agkozak
 	url = https://github.com/agkozak/agkozak-zsh-prompt
 [submodule "configs/zsh/oh-my-zsh"]
-	path = configs/zsh/oh-my-zsh
+	path = configs-old/zsh/oh-my-zsh
 	url = https://github.com/ohmyzsh/ohmyzsh

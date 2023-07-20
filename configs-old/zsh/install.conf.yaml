@@ -12,7 +12,6 @@
       create: true
     ~/.config/zsh_custom/themes/agkozak.zsh-theme:
       path: config/zsh_custom/themes/agkozak.zsh-theme
-      create: true
     ~/.oh-my-zsh: oh-my-zsh
     ~/.zprofile: zprofile
     ~/.zshenv: zshenv
