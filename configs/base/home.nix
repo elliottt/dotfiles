@@ -24,6 +24,8 @@
     ];
   };
 
+  programs.htop.enable = true;
+
   programs.ripgrep.enable = true;
 
   home.packages = [
