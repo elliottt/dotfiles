@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Reattach to an existing tmux session creating one if none exists, and connect
+# to a new running ssh agent.
+
+set -euo pipefail
+
+session="${1:-default}"
+
+# Fix the symlink for the SSH_AUTH_SOCK
+ln -sfT "$SSH_AUTH_SOCK" "$HOME/.ssh/auth_sock"
+export SSH_AUTH_SOCK="$HOME/.ssh/auth_sock"
+
+exec tmux new-session -AD -s "$session"

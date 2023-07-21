@@ -39,4 +39,8 @@
     pkgs.llvmPackages_16.clang
     pkgs.clang-tools_16
   ];
+
+  home.file = {
+    ".local/bin/reattach".source = ./bin/reattach;
+  };
 }
