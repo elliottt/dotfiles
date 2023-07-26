@@ -42,5 +42,6 @@
 
   home.file = {
     ".local/bin/reattach".source = ./bin/reattach;
+    ".config/ripgrep/ripgreprc".text = "";
   };
 }
