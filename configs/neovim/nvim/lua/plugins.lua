@@ -20,6 +20,8 @@ return require 'packer'.startup{function(use)
         run = 'make release'
     }
 
+    use 'elliottt/wit.nvim'
+
     use {
         'junegunn/fzf',
         run = './install --bin'
