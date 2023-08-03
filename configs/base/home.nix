@@ -32,6 +32,8 @@
     pkgs.bazelisk
     pkgs.hyperfine
     pkgs.openssl
+    pkgs.zlib.dev
+    pkgs.pkg-config
 
     (pkgs.binutils // { meta.priority = 6; })
     (pkgs.gcc // { meta.priority = 8; })
@@ -42,6 +44,7 @@
 
   home.file = {
     ".local/bin/reattach".source = ./bin/reattach;
+
     ".config/ripgrep/ripgreprc".text = "";
   };
 }
