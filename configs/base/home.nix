@@ -4,9 +4,17 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.exa.enable = true;
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+  };
 
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    defaultOptions = [
+      "--layout=reverse"
+    ];
+  };
 
   programs.gh = {
     enable = true;
@@ -29,6 +37,7 @@
   programs.ripgrep.enable = true;
 
   home.packages = [
+    pkgs.gnumake
     pkgs.bazelisk
     pkgs.hyperfine
     pkgs.openssl
