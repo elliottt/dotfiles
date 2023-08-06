@@ -3,7 +3,7 @@
 {
 
   home.packages = [
-    pkgs.rust-analyzer
+    pkgs.rustup
   ];
 
   home.file = {
