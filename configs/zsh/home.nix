@@ -7,6 +7,8 @@
 
     autocd = true;
 
+    defaultKeymap = "viins";
+
     initExtra = ''
     AGKOZAK_LEFT_PROMPT_ONLY=1
     AGKOZAK_COLORS_EXIT_STATUS="169"
