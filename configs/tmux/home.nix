@@ -6,10 +6,9 @@
     enable = true;
     keyMode = "vi";
 
-    extraConfig = ''
-      # Use C-t instead of C-b
-      set-option -g prefix C-t
+    prefix = "C-t";
 
+    extraConfig = ''
       # Use v and s to split windows, like vim
       bind-key v split-window -h -c '#{pane_current_path}'
       unbind-key s
