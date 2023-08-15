@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
 
@@ -25,5 +25,9 @@
     runner = 'qemu-s390x -L /usr/s390x-linux-gnu -E LD_LIBRARY_PATH=/usr/s390x-linux-gnu/lib -E WASMTIME_TEST_NO_HOG_MEMORY=1'
     '';
   };
+
+  programs.zsh.envExtra = ''
+  export PATH="$PATH:${config.home.homeDirectory}/.cargo/bin"
+  '';
 
 }

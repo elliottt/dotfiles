@@ -19,7 +19,7 @@
     '';
 
     envExtra = ''
-    export PATH=$PATH:${config.home.homeDirectory}/.local/bin
+    export PATH="$PATH:${config.home.homeDirectory}/.local/bin"
     '';
 
     # Helpful tip:
