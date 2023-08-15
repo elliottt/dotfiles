@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
 
@@ -16,6 +16,10 @@
     AGKOZAK_COLORS_PATH="109"
     AGKOZAK_COLORS_BRANCH_STATUS="244"
     AGKOZAK_PROMPT_DIRTRIM="0"
+    '';
+
+    envExtra = ''
+    export PATH=$PATH:${config.home.homeDirectory}/.local/bin
     '';
 
     # Helpful tip:
