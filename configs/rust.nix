@@ -2,10 +2,6 @@
 
 {
 
-  home.packages = [
-    pkgs.rustup
-  ];
-
   home.file = {
     ".cargo/config.toml".text = ''
     [target.x86_64-unknown-linux-gnu]

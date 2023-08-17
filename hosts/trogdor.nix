@@ -2,55 +2,9 @@
 
 let
 
-  cargo-component = pkgs.rustPlatform.buildRustPackage rec {
-    pname = "cargo-component";
-    version = "0.1.0";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "bytecodealliance";
-      repo = pname;
-      rev = "d14cef65719d0d186218d1dfe5f04bbbf295dc80";
-      sha256 = "162qr3brrb1flr5fras1lak9i59zyalmj28pvg276dbrf6hrnmkl";
-    };
-
-    nativeBuildInputs = [
-      pkgs.pkg-config
-      pkgs.openssl.dev
-      pkgs.zlib.dev
-    ];
-
-    buildInputs = [
-      pkgs.openssl
-      pkgs.zlib
-    ];
-
-    doCheck = false;
-
-    cargoLock = {
-      lockFile = "${src}/Cargo.lock";
-      outputHashes = {
-        "warg-api-0.1.0" = "sha256-A5FQ/nbuzV8ockV6vOMKUEoJKeaId3oyZU1QeNpd1Zc=";
-      };
-    };
-  };
-
-  cargo-vet = pkgs.rustPlatform.buildRustPackage rec {
-    pname = "cargo-vet";
-    version = "0.8.0";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "mozilla";
-      repo = "cargo-vet";
-      rev = "8c8b6d7a5237544c613de616a031586587f49a42";
-      sha256 = "sha256-WBoPDF69O4jhBvsETnFyGCcUGcaVbsRwUfIJoRt1mk8=";
-    };
-
-    doCheck = false;
-
-    cargoLock = {
-      lockFile = "${src}/Cargo.lock";
-    };
-  };
+  cargo-component = import ../packages/cargo-component.nix { inherit pkgs; };
+  cargo-vet = import ../packages/cargo-vet.nix { inherit pkgs; };
+  wasm-tools = import ../packages/wasm-tools.nix { inherit pkgs; };
 
 in {
 
@@ -82,6 +36,7 @@ in {
 
     cargo-component
     cargo-vet
+    wasm-tools
   ];
 
   programs.direnv = {

@@ -26,6 +26,11 @@
     };
   };
 
+  programs.ssh = {
+    enable = true;
+    package = pkgs.openssh;
+  };
+
   programs.git = {
     enable = true;
     userName = "Trevor Elliott";
@@ -69,5 +74,9 @@
       # word-wrap at width
       width = 80;
     };
+
+    ".config/nix/nix.conf".text = ''
+    experimental-features = nix-command
+    '';
   };
 }
