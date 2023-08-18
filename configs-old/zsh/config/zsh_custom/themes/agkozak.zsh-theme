@@ -1,1 +1,0 @@
-agkozak/agkozak-zsh-prompt.plugin.zsh
