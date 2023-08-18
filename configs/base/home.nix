@@ -4,6 +4,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Unfree program filter
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "zoom"
+    ];
+
   programs.bat.enable = true;
 
   programs.fzf = {

@@ -25,6 +25,7 @@
     pkgs.valgrind
     pkgs.binaryen
     pkgs.yarn
+    pkgs.zoom-us
 
     pkgs.alacritty
   ];
