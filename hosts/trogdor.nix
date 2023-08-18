@@ -34,6 +34,7 @@ in {
     pkgs.yarn
     pkgs.qemu
     pkgs.creduce
+    pkgs.openssh
 
     cargo-component
     cargo-vet
