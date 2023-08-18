@@ -1,0 +1,79 @@
+* {
+  separator-style: "solid";
+  hide-scrollbar: true;
+
+  foreground: rgba(0, 0, 0, 100%);
+  foreground-active: rgba(255, 0, 0, 100%);
+  foreground-urgent: rgba(0, 255, 0, 100%);
+  background: rgba(255, 255, 255, 100%);
+  background-selected: rgba(230, 230, 230, 100%);
+}
+
+window {
+  background-color: @background;
+  border: 1px;
+  border-color: black;
+  padding: 5px;
+}
+
+listview {
+  background-color: @background;
+  border: 1px 0px 0px;
+  border-color: black;
+}
+
+element {
+  border: 0;
+  paddign: 2px;
+}
+
+element-text, element-icon {
+  text-color: inherit;
+  background-color: inherit;
+}
+
+element normal.normal {
+  text-color: @foreground;
+  background-color: @background;
+}
+
+element normal.active {
+  text-color: @foreground-active;
+  background-color: @background;
+}
+
+element normal.urgent {
+  text-color: @foreground-urgent;
+  background-color: @background;
+}
+
+element selected.normal {
+  text-color: @foreground;
+  background-color: @background-selected;
+}
+
+element selected.active {
+  text-color: @foreground-active;
+  background-color: @background-selected;
+}
+
+element selected.urgent {
+  text-color: @foreground-urgent;
+  background-color: @background-selected;
+}
+
+element alternate.normal {
+  text-color: @foreground;
+  background-color: @background;
+}
+
+element alternate.active {
+  text-color: @foreground-active;
+  background-color: @background;
+}
+
+element alternate.urgent {
+  text-color: @foreground-urgent;
+  background-color: @background;
+}
+
