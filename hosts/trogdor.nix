@@ -5,6 +5,7 @@ let
   cargo-component = import ../packages/cargo-component.nix { inherit pkgs; };
   cargo-vet = import ../packages/cargo-vet.nix { inherit pkgs; };
   cbindgen = import ../packages/cbindgen.nix { inherit pkgs; };
+  viceroy = import ../packages/viceroy.nix { inherit pkgs; };
   wasm-tools = import ../packages/wasm-tools.nix { inherit pkgs; };
 
 in {
@@ -39,6 +40,7 @@ in {
     cargo-component
     cargo-vet
     cbindgen
+    viceroy
     wasm-tools
   ];
 
