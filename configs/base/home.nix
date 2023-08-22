@@ -27,6 +27,10 @@
     includes = [
       { path = ./git/aliases; }
     ];
+    ignores = [
+      ".direnv/"
+      ".envrc"
+    ];
   };
 
   programs.htop.enable = true;
