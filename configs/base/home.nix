@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Let Home Manager install and manage itself.
@@ -24,9 +24,14 @@
   programs.git = {
     enable = true;
     userName = "Trevor Elliott";
-    includes = [
-      { path = ./git/aliases; }
-    ];
+    aliases = {
+      "lol" = lib.concatStringsSep " " [
+        "log"
+        "--graph"
+        "--abbrev-commit"
+        "--pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+      ];
+    };
     ignores = [
       ".direnv/"
       ".envrc"
