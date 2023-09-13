@@ -11,8 +11,8 @@
 
     enableCompletion = true;
 
-    shellAliases = {
-      # Convenience aliases from oh-my-zsh
+    # Convenience aliases from oh-my-zsh
+    shellGlobalAliases = {
       "..." = "../..";
       "...." = "../../..";
       "....." = "../../../..";
