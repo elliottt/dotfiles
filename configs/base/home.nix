@@ -49,6 +49,10 @@
         "--pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
       ];
     };
+    extraConfig = {
+      pull.rebase = true;
+      rebase.autoStash = true;
+    };
     ignores = [
       ".direnv/"
       ".envrc"
