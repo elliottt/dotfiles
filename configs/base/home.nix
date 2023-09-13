@@ -17,6 +17,12 @@
     nix-direnv.enable = true;
   };
 
+  programs.eza = {
+    enable = true;
+    enableAliases = true;
+    git = true;
+  };
+
   programs.fzf = {
     enable = true;
     defaultOptions = [
