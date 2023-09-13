@@ -3,6 +3,7 @@
 let
 
   cargo-component = import ../packages/cargo-component.nix { inherit pkgs; };
+  cargo-fuzz = import ../packages/cargo-fuzz.nix { inherit pkgs; };
   cargo-vet = import ../packages/cargo-vet.nix { inherit pkgs; };
   cbindgen = import ../packages/cbindgen.nix { inherit pkgs; };
   viceroy = import ../packages/viceroy.nix { inherit pkgs; };
@@ -38,6 +39,7 @@ in {
     pkgs.openssh
 
     cargo-component
+    cargo-fuzz
     cargo-vet
     cbindgen
     viceroy
