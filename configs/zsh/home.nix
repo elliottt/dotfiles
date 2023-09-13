@@ -9,8 +9,14 @@
 
     defaultKeymap = "viins";
 
+    enableCompletion = true;
+
     shellAliases = {
-      ls = "ls --color=auto";
+      # Convenience aliases from oh-my-zsh
+      "..." = "../..";
+      "...." = "../../..";
+      "....." = "../../../..";
+      "......" = "../../../../..";
     };
 
     initExtra = ''
