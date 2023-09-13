@@ -14,7 +14,7 @@
 
     [target.riscv64gc-unknown-linux-gnu]
     linker = 'riscv64-linux-gnu-gcc'
-    runner = 'qemu-riscv64 -L /usr/riscv64-linux-gnu -E LD_LIBRARY_PATH=/usr/riscv64-linux-gnu/lib -E WASMTIME_TEST_NO_HOG_MEMORY=1'
+    runner = 'qemu-riscv64 -cpu rv64,v=true,vlen=256,vext_spec=v1.0,zba=true,zbb=true,zbc=true,zbs=true,zbkb=true -L /usr/riscv64-linux-gnu -E LD_LIBRARY_PATH=/usr/riscv64-linux-gnu/lib -E WASMTIME_TEST_NO_HOG_MEMORY=1'
 
     [target.s390x-unknown-linux-gnu]
     linker = 's390x-linux-gnu-gcc'
