@@ -16,6 +16,7 @@ vim.o.timeoutlen = 500
 vim.o.scrolloff = 3
 vim.o.ruler = true
 vim.o.number = true
+vim.o.relativenumber = true
 
 -- reload files that change outside of vim
 vim.o.autoread = true
