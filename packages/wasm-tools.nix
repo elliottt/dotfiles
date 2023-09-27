@@ -2,22 +2,18 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "wasm-tools";
-  version = "1.0.38";
+  version = "1.0.44";
 
   src = pkgs.fetchFromGitHub {
     owner = "bytecodealliance";
     repo = "wasm-tools";
     rev = "wasm-tools-${version}";
-    sha256 = "sha256-+lJbZinLUoTZU5elMdrwN80VyPFDWlqNuWyA35/xGEQ=";
+    sha256 = "sha256-g7pjfl3aAqYpf3xlCVbpXAglJCKWrztIeMmVOPgIkWQ=";
   };
 
   doCheck = false;
 
-  postPatch = ''
-  cp ${./wasm-tools.lock} Cargo.lock
-  '';
-
   cargoLock = {
-    lockFile = ./wasm-tools.lock;
+    lockFile = "${src}/Cargo.lock";
   };
 }
