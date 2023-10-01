@@ -31,7 +31,7 @@
       bind-key C-t move-window
 
       # No delay for <Esc>
-      set -sg escape-time 0
+      set -sg escape-time 50
 
       # Start selection with v, copy with y
       bind-key -Tcopy-mode-vi 'v' send-keys -X begin-selection
@@ -45,7 +45,7 @@
       set -g default-terminal "screen-256color"
 
       # Reloading
-      bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
+      bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded..."
 
       # Load theme
       source $HOME/.config/tmux/tmuxline.conf
