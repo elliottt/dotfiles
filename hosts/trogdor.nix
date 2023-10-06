@@ -7,8 +7,9 @@ let
   cargo-vet = import ../packages/cargo-vet.nix { inherit pkgs; };
   cbindgen = import ../packages/cbindgen.nix { inherit pkgs; };
   viceroy = import ../packages/viceroy.nix { inherit pkgs; };
-  wasi-tools = import ../packages/wasi-tools.nix { inherit pkgs; };
   wasm-tools = import ../packages/wasm-tools.nix { inherit pkgs; };
+  wit-bindgen = import ../packages/wit-bindgen.nix { inherit pkgs; };
+  wit-deps = import ../packages/wit-deps.nix { inherit pkgs; };
 
 in {
 
@@ -44,8 +45,9 @@ in {
     cargo-vet
     cbindgen
     viceroy
-    wasi-tools
     wasm-tools
+    wit-bindgen
+    wit-deps
   ];
 
   # This value determines the Home Manager release that your configuration is
