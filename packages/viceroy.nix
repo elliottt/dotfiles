@@ -2,13 +2,13 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "viceroy";
-  version = "0.7.0";
+  version = "0.9.1";
 
   src = pkgs.fetchFromGitHub {
     owner = "fastly";
     repo = pname;
     rev = "v${version}";
-    sha256 = "sha256-ml9N4oxq80A1y7oFE98eifFIEtdcT9IRhXwDMEJ298k=";
+    sha256 = "sha256-Z5poizMXp4xgn0Tx0E36rvueBx3dFL7++alewqG9E9w=";
   };
 
   nativeBuildInputs = [
