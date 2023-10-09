@@ -51,3 +51,6 @@ vim.o.termguicolors = true
 
 -- i basically only want tab characters in makefiles
 vim.o.expandtab = true
+
+-- disable the mouse
+vim.o.mouse = nil
