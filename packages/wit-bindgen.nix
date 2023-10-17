@@ -13,7 +13,11 @@ pkgs.rustPlatform.buildRustPackage rec {
 
   doCheck = false;
 
+  postPatch = ''
+    cp ${./wit-bindgen.lock} Cargo.lock
+  '';
+
   cargoLock = {
-    lockFile = "${src}/Cargo.lock";
+    lockFile = ./wit-bindgen.lock;
   };
 }
