@@ -18,6 +18,7 @@ let
     # (nixGLWrap "glxinfo" glxinfo)
 in {
   imports = [
+    ../configs/alacritty.nix
     ../configs/base/home.nix
     ../configs/kitty/home.nix
     ../configs/neovim/home.nix
@@ -36,6 +37,9 @@ in {
   # This is an ubuntu install, with nix
   targets.genericLinux.enable = true;
 
+  # Override the alacritty package to use the nixGL wrapped version
+  programs.alacritty.package = nixGLWrap "alacritty" pkgs.alacritty;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -45,7 +49,6 @@ in {
     pkgs.binaryen
     pkgs.yarn
 
-    (nixGLWrap "alacritty" pkgs.alacritty)
     (nixGLWrap "wezterm" pkgs.wezterm)
   ];
 
