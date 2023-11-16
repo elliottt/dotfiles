@@ -1,7 +1,22 @@
 { config, pkgs, ... }:
 
-{
+let
+  nixGL = import <nixgl> {};
 
+  nixGLWrap = binary: drv: pkgs.symlinkJoin {
+    name = "${drv.name}-nixglwrapped";
+    paths = [ drv ];
+    nativeBuildInputs = [ pkgs.makeBinaryWrapper ];
+    postBuild = ''
+      makeBinaryWrapper \
+        "${nixGL.auto.nixGLDefault}/bin/nixGL" \
+        "$out/bin/${binary}" \
+        --inherit-argv0 \
+        --add-flags "${drv}/bin/${binary}"
+    '';
+  };
+    # (nixGLWrap "glxinfo" glxinfo)
+in {
   imports = [
     ../configs/base/home.nix
     ../configs/kitty/home.nix
@@ -18,6 +33,9 @@
 
   programs.git.userEmail = "telliott@fastly.com";
 
+  # This is an ubuntu install, with nix
+  targets.genericLinux.enable = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -26,9 +44,9 @@
     pkgs.valgrind
     pkgs.binaryen
     pkgs.yarn
-    pkgs.zoom-us
 
-    pkgs.alacritty
+    (nixGLWrap "alacritty" pkgs.alacritty)
+    (nixGLWrap "wezterm" pkgs.wezterm)
   ];
 
   # This value determines the Home Manager release that your configuration is
