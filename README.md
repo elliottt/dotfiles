@@ -3,6 +3,8 @@
 ## Setup
 
 ```shell
-$ git clone --recursive git@github.com:elliottt/dotfiles ~/.dotfiles
-$ ~/.dotfiles/install
+$ git clone ~/.dotfiles
+$ mkdir -p ~/.config/home-manager
+$ ln -s "$(hostname)".nix ~/.config/home-manager/home.nix
+$ home-manager switch
 ```

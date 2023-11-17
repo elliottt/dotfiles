@@ -1,6 +1,0 @@
-- defaults:
-    link:
-      relink: true
-
-- link:
-    ~/.config/zsh_custom/linuxbrew.zsh: linuxbrew.zsh
