@@ -1,6 +1,14 @@
 { pkgs, lib, ... }:
 
 {
+  # I don't have any NixOS machines.
+  #
+  # REMEMBER: if programs like alacritty are not found by gnome3, make sure that
+  # the home-manager env vars are sourced in ~/.profile. That script contains
+  # the definitions of things like `XDG_DATA_DIRS` which are used by gnome3 to
+  # find .desktop files that describe what can be launched.
+  targets.genericLinux.enable = true;
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
