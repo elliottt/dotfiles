@@ -191,6 +191,9 @@ return require 'packer'.startup{function(use)
                 to_do = {
                     symbols = { ' ', '-', 'x' }
                 },
+                modules = {
+                    maps = true,
+                },
                 mappings = {
                     MkdnFoldSection = false,
                     MkdnUnfoldSection = false,
