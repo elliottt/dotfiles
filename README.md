@@ -5,6 +5,7 @@
 ```shell
 $ git clone ~/.dotfiles
 $ mkdir -p ~/.config/home-manager
-$ ln -s "$(hostname)".nix ~/.config/home-manager/home.nix
+$ cd ~/.dotfiles
+$ ln -s "hosts/$(hostname)".nix ~/.config/home-manager/home.nix
 $ home-manager switch
 ```
