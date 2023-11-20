@@ -1,26 +1,23 @@
 { pkgs, ... }:
 
 {
-  programs.alacritty = {
+  programs.alacritty = with pkgs; {
     enable = true;
 
-    settings = {
-      window.padding = {
-        x = 5;
-        y = 5;
-      };
+    settings.window.padding = lib.mkDefault {
+      x = 5;
+      y = 5;
+    };
 
-      key_bindings = [
-        { key = "F11"; action = "ToggleFullscreen"; }
-      ];
+    settings.key_bindings = lib.mkDefault [
+      { key = "F11"; action = "ToggleFullscreen"; }
+    ];
 
-      font = {
-        size = 12;
-        normal = {
-          family = "FuraMono Nerd Font Mono";
-          style = "Regular";
-        };
-      };
+    settings.font.size = lib.mkDefault 12;
+
+    settings.font.normal = lib.mkDefault {
+      family = "FuraMono Nerd Font Mono";
+      style = "Regular";
     };
   };
 }

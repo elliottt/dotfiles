@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
-{
-
+let
+  wrapNixGL = import ../lib/nixgl.nix { inherit pkgs; };
+in {
   imports = [
     ../configs/alacritty.nix
     ../configs/bakaneko/home.nix
@@ -19,6 +20,11 @@
 
   programs.git.userEmail = "awesomelyawesome@gmail.com";
 
+  # Override some alacritty settings
+  programs.alacritty.package = wrapNixGL "alacritty" pkgs.alacritty;
+  programs.alacritty.settings.font.size = 8;
+  programs.alacritty.settings.font.normal.family = "FiraCodeNerdFontMono";
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -32,7 +38,10 @@
   # environment.
   home.packages = [
     pkgs.qmk
+    pkgs.nerdfonts
   ];
+
+  fonts.fontconfig.enable = true;
 
   home.file = {
 
