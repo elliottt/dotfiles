@@ -3,11 +3,11 @@
 {
 
   imports = [
-    ../programs/base/home.nix
+    ../programs/base
     ../programs/neovim
-    ../programs/rust.nix
-    ../programs/tmux/home.nix
-    ../programs/zsh/home.nix
+    ../programs/rust
+    ../programs/tmux
+    ../programs/zsh
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
