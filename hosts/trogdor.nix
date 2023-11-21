@@ -14,11 +14,11 @@ let
 in {
 
   imports = [
-    ../configs/base/home.nix
-    ../configs/neovim/home.nix
-    ../configs/rust.nix
-    ../configs/tmux/home.nix
-    ../configs/zsh/home.nix
+    ../programs/base/home.nix
+    ../programs/neovim
+    ../programs/rust.nix
+    ../programs/tmux/home.nix
+    ../programs/zsh/home.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

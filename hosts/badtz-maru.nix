@@ -3,11 +3,11 @@
 {
 
   imports = [
-    ../configs/base/home.nix
-    ../configs/neovim/home.nix
-    ../configs/rust.nix
-    ../configs/tmux/home.nix
-    ../configs/zsh/home.nix
+    ../programs/base/home.nix
+    ../programs/neovim
+    ../programs/rust.nix
+    ../programs/tmux/home.nix
+    ../programs/zsh/home.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -20,6 +20,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    pkgs.p7zip
   ];
 
   # This value determines the Home Manager release that your configuration is
