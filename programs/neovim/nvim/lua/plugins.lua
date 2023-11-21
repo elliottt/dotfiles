@@ -97,7 +97,7 @@ return require 'packer'.startup{function(use)
                     "cpp",
                     "javascript",
                     "lua",
-                    "ruby",
+                    -- "ruby",
                     "rust",
                     "typescript",
                     "vim",

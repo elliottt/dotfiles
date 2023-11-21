@@ -1,6 +1,14 @@
 { pkgs, ... }:
 
-{
+let
+  wrapNixGL = import ../../lib/nixgl.nix { inherit pkgs; };
+in {
+  home.packages = [
+    (wrapNixGL "polybar" pkgs.polybar)
+    (wrapNixGL "herbstluftwm" pkgs.herbstluftwm)
+    (wrapNixGL "rofi" pkgs.rofi)
+  ];
+
   home.file = {
     ".config/herbstluftwm/autostart" = {
       source = ./autostart;
