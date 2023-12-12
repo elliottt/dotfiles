@@ -7,8 +7,9 @@ pkgs.rustPlatform.buildRustPackage rec {
   src = pkgs.fetchFromGitHub {
     owner = "bytecodealliance";
     repo = "wit-bindgen";
-    rev = "${pname}-${version}";
-    sha256 = "sha256-QqLTXvzBobDsdwo30yUFK2bHedawiYPni2zhKk6I7j8=";
+    # rev = "${pname}-${version}";
+    rev = "045259a28a1d7e4404fd39613a3b0b31bd40721c";
+    sha256 = "sha256-OdHk4YmQgp3qEBz8M+scrgORofQXAUx0fbgEs8PSA5E=";
   };
 
   doCheck = false;
