@@ -13,26 +13,6 @@ local function augroup(name, body)
     body(au)
 end
 
--- config
-augroup("reloading", function(au)
-    au({"BufWritePost"}, {
-        pattern = {
-            "autocommands.lua",
-            "lsp.lua",
-            "mappings.lua",
-            "plugins.lua",
-            "settings.lua",
-            "treesitter.lua",
-        },
-        command = "source <afile>",
-    })
-
-    au({"BufWritePost"}, {
-        pattern = "plugins.lua",
-        command = "source <afile> | PackerSync",
-    })
-end)
-
 -- location reloading
 augroup("location", function(au)
     au({"BufReadPost"}, {
