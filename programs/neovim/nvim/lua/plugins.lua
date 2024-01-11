@@ -41,9 +41,38 @@ return require 'packer'.startup{function(use)
         },
         branch = '0.1.x',
         config = function()
+            -- When multi-selection is present use `:e` on all of them, otherwise fall back to
+            -- `select_default`.
+            -- https://github.com/nvim-telescope/telescope.nvim/issues/1048#issuecomment-1679797700
+            local select_one_or_multi = function(prompt_bufnr)
+                print('one or multi')
+                local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
+                print('picker')
+                local multi = picker:get_multi_selection()
+                print('multi')
+                if not vim.tbl_isempty(multi) then
+                    print('testing')
+                    require('telescope.actions').close(prompt_bufnr)
+                    for _, j in pairs(multi) do
+                        if j.path ~= nil then
+                            vim.cmd('edit ' .. j.path)
+                        end
+                    end
+                else
+                    print('single')
+                    require('telescope.actions').select_default(prompt_bufnr)
+                end
+            end
+
             require 'telescope'.setup{
                 defaults = {
                     layout_strategy = 'vertical',
+                    mappings = {
+                        i = {
+                            ['<c-h>'] = 'which_key',
+                            ['<CR>'] = select_one_or_multi,
+                        },
+                    },
                 },
                 extensions = {
                     fzf = {
