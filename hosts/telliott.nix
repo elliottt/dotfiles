@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  wasm-tools = import ../packages/wasm-tools.nix { inherit pkgs; };
   nixGLWrap = import ../lib/nixgl.nix { inherit pkgs; };
 in {
   imports = [
@@ -31,8 +32,11 @@ in {
     pkgs.valgrind
     pkgs.binaryen
     pkgs.yarn
+    pkgs.v8
 
     (nixGLWrap "wezterm" pkgs.wezterm)
+
+    wasm-tools
   ];
 
   # This value determines the Home Manager release that your configuration is
