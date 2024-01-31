@@ -69,7 +69,11 @@ return require 'packer'.startup{function(use)
                     layout_strategy = 'vertical',
                     mappings = {
                         i = {
-                            ['<c-h>'] = 'which_key',
+                            ['<CR>'] = select_one_or_multi,
+                            ['<C-J>'] = 'move_selection_next',
+                            ['<C-K>'] = 'move_selection_previous',
+                        },
+                        n = {
                             ['<CR>'] = select_one_or_multi,
                         },
                     },
