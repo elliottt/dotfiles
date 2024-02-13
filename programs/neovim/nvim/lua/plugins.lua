@@ -109,8 +109,6 @@ return require 'packer'.startup{function(use)
         end,
     }
 
-    use 'mhinz/vim-sayonara'
-
     use {
         'ggandor/leap.nvim',
         config = function()

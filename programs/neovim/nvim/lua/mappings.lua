@@ -10,6 +10,57 @@ wk.register({
 
 local telescope = require 'telescope.builtin'
 
+-- Toggle all the stuff needed to get into a reasonable mode for copy/paste from elsewhere. This
+-- assumes that number and relativenumber are already on.
+local function toggle_paste()
+    vim.o.paste = not vim.o.paste
+    vim.o.number = not vim.o.number
+    vim.o.relativenumber = not vim.o.relativenumber
+end
+
+-- Close buffers, preserving split layout until there's a single buffer remaining.
+local function close_buffer()
+    -- as a shortcut, if this is an unlisted buffer, delete it immediately
+    local bufname = vim.fn.bufname('%')
+    if vim.fn.buflisted(bufname) == 0 then
+        vim.cmd('bdelete')
+        return
+    end
+
+    local listed_buffers = 0
+    for i=1,vim.fn.bufnr('$') do
+        if vim.fn.buflisted(i) == 1 then
+            listed_buffers = listed_buffers + 1
+        end
+    end
+
+    -- close buffers but preserve the split
+    if listed_buffers > 1 then
+        vim.cmd('bprevious')
+
+        -- as changing away from the buffer could have already deleted it (like with fugitive) only
+        -- delete if it's still present, and close the split if the buffer disappears.
+        if vim.fn.buflisted(bufname) == 1 then
+            vim.cmd('bdelete #')
+        else
+            vim.cmd('close')
+        end
+
+        return
+    end
+
+    -- count the number of open splits, and close the split if it's non-zero
+    if vim.fn.tabpagewinnr(vim.fn.tabpagenr(), '$') > 1 then
+        vim.cmd('close')
+        return
+    end
+
+    -- if there's still a buffer left, delete it
+    if listed_buffers > 0 then
+        vim.cmd('bdelete')
+    end
+end
+
 wk.register{
     -- fzf
     ['<leader>b'] = { '<cmd>Telescope buffers<cr>', 'Buffers' },
@@ -26,12 +77,12 @@ wk.register{
 
     -- misc
     ['<leader>h'] = { '<cmd>noh<cr>', 'Clear highlighting' },
-    ['<leader>p'] = { '<cmd>set nolist! paste! number!<cr>', 'Toggle paste mode' },
+    ['<leader>p'] = { toggle_paste, 'Toggle paste mode' },
 
     -- buffer management
     ['<c-n>'] = { '<cmd>bnext<cr>', 'Next buffer' },
     ['<c-p>'] = { '<cmd>bprevious<cr>', 'Previous buffer' },
-    ['<c-d>'] = { '<cmd>Sayonara<cr>', 'Close buffer' },
+    ['<c-d>'] = { close_buffer, 'Close buffer' },
 
     -- list navigation
     ['[q'] = { '<cmd>cprev<cr>', 'Previous quickfix item' },
