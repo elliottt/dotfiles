@@ -20,45 +20,58 @@ end
 
 -- Close buffers, preserving split layout until there's a single buffer remaining.
 local function close_buffer()
-    -- as a shortcut, if this is an unlisted buffer, delete it immediately
-    local bufname = vim.fn.bufname('%')
-    if vim.fn.buflisted(bufname) == 0 then
-        vim.cmd('bdelete')
-        return
-    end
-
+    -- Count buffers that are both loaded and listed. This excludes both hidden buffers, and the
+    -- default buffer from the total count, making a result of `0` indicate that there are no useful
+    -- buffers open.
     local listed_buffers = 0
     for i=1,vim.fn.bufnr('$') do
-        if vim.fn.buflisted(i) == 1 then
-            listed_buffers = listed_buffers + 1
+        local info = vim.fn.getbufinfo(i)[1]
+        if info ~= nil and info.listed == 1 then
+            if info.name ~= "" or info.changed ~= 0 then
+                listed_buffers = listed_buffers + 1
+            end
         end
     end
 
-    -- close buffers but preserve the split
+    -- As a shortcut, if this is an unlisted buffer, and there are splits present, close the split
+    -- immediately. This handles help splits and the like by closing those splits, instead of
+    -- assuming that they should stick around.
+    local bufname = vim.fn.bufname('%')
+    local num_splits = vim.fn.tabpagewinnr(vim.fn.tabpagenr(), '$')
+    if vim.fn.buflisted(bufname) == 0 and num_splits > 1 then
+        vim.cmd('close')
+        return
+    end
+
+    -- Close buffers but preserve splits.
     if listed_buffers > 1 then
         vim.cmd('bprevious')
 
-        -- as changing away from the buffer could have already deleted it (like with fugitive) only
+        -- As changing away from the buffer could have already deleted it (like with fugitive) only
         -- delete if it's still present, and close the split if the buffer disappears.
         if vim.fn.buflisted(bufname) == 1 then
             vim.cmd('bdelete #')
-        else
+        elseif num_splits > 1 then
             vim.cmd('close')
         end
 
         return
     end
 
-    -- count the number of open splits, and close the split if it's non-zero
-    if vim.fn.tabpagewinnr(vim.fn.tabpagenr(), '$') > 1 then
+    -- Close if there are more than one split open.
+    if num_splits > 1 then
         vim.cmd('close')
         return
     end
 
-    -- if there's still a buffer left, delete it
+    -- If there's still a buffer left, delete it.
     if listed_buffers > 0 then
         vim.cmd('bdelete')
+        return
     end
+
+    -- Finally, if all else fails, quit
+    vim.cmd('quit')
 end
 
 wk.register{
