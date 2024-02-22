@@ -40,6 +40,7 @@ in {
     pkgs.creduce
     pkgs.openssh
     pkgs.fd
+    pkgs.whois
 
     cargo-component
     cargo-fuzz
