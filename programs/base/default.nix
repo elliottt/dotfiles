@@ -25,10 +25,7 @@
     nix-direnv.enable = true;
   };
 
-  programs.eza = {
-    enable = true;
-    enableAliases = true;
-  };
+  programs.eza.enable = true;
 
   programs.fzf = {
     enable = true;
