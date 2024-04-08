@@ -33,6 +33,8 @@ in {
     pkgs.binaryen
     pkgs.yarn
     pkgs.v8
+    pkgs.wasmi
+    pkgs.util-linux
 
     (nixGLWrap "wezterm" pkgs.wezterm)
 
