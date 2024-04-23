@@ -1,43 +1,48 @@
 -- vim: foldmethod=marker
 
--- Bootstrap packer
-local fn = vim.fn
-
-local install_path = fn.stdpath("data") .. '/site/pack/packer/start/packer.nvim'
-
-if fn.empty(fn.glob(install_path)) then
-    fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd.packadd('packer.nvim')
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-return require 'packer'.startup{function(use)
-
-    use 'wbthomason/packer.nvim'
+return require 'lazy'.setup({
 
     -- Utility plugins
-    use {
+    {
         'elliottt/two-trucs',
-        run = 'make release'
-    }
+        build = 'make release'
+    },
 
-    use 'elliottt/wit.nvim'
+    'elliottt/wit.nvim',
 
-    use {
+    {
         'junegunn/fzf',
-        run = './install --bin'
-    }
-    use 'junegunn/fzf.vim'
+        build = './install --bin'
+    },
 
-    use {
+    'junegunn/fzf.vim',
+
+    'nvim-lua/plenary.nvim',
+
+    {
         'nvim-telescope/telescope-fzf-native.nvim',
-        run = "make",
-    }
+        build = 'make',
+    },
 
-    use {
+    {
         'nvim-telescope/telescope.nvim',
-        requires = {
-            'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope-fzf-native.nvim',
+        dependencies = {
+            { 'nvim-lua/plenary.nvim', lazy = false },
+            { 'nvim-telescope/telescope-fzf-native.nvim', lazy = false },
         },
         branch = '0.1.x',
         config = function()
@@ -89,37 +94,39 @@ return require 'packer'.startup{function(use)
             }
             require 'telescope'.load_extension('fzf')
         end,
-    }
+    },
 
-    use 'tpope/vim-repeat'
-    use 'tpope/vim-fugitive'
-    use 'tpope/vim-surround'
+    'tpope/vim-repeat',
+    'tpope/vim-fugitive',
+    'tpope/vim-surround',
 
-    use {
+    {
         'folke/which-key.nvim',
         config = function()
             require 'which-key'.setup()
         end
-    }
+    },
 
-    use {
+    {
         'numToStr/Comment.nvim',
         config = function()
             require 'Comment'.setup()
         end,
-    }
+    },
 
-    use {
+    {
         'ggandor/leap.nvim',
         config = function()
             require 'leap'.setup{}
         end,
-    }
+    },
 
     -- Treesitter
-    use {
+    {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
+        build = function()
+            vim.cmd(":TSUpdate")
+        end,
         config = function()
             require 'nvim-treesitter.configs'.setup {
                 ensure_installed = {
@@ -138,21 +145,21 @@ return require 'packer'.startup{function(use)
                 },
             }
         end,
-    }
+    },
 
     -- LSP
-    use 'neovim/nvim-lspconfig'
+    'neovim/nvim-lspconfig',
 
     -- Completion
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/nvim-cmp'
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/vim-vsnip'
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-vsnip',
+    'hrsh7th/vim-vsnip',
 
     -- Colorschemes
-    use {
+    {
         'rebelot/kanagawa.nvim',
-        disable = false,
+        enabled = true,
         config = function()
             require 'kanagawa'.setup{
                 colors = {
@@ -168,34 +175,36 @@ return require 'packer'.startup{function(use)
             }
             vim.cmd.colorscheme('kanagawa')
         end
-    }
+    },
 
-    use {
+    {
         'sainnhe/sonokai',
-        disable = true,
+        enabled = false,
         config = function()
             vim.g.sonokai_transparent_background = 1
             vim.g.sonokai_style = 'atlantis'
             vim.cmd.colorscheme('sonokai')
         end,
-    }
+    },
 
     -- Statuslines
-    use 'kyazdani42/nvim-web-devicons'
+    'kyazdani42/nvim-web-devicons',
 
-    use {
+    {
         'kdheepak/tabline.nvim',
-        requires = {{'kyazdani42/nvim-web-devicons', opt = true }},
-        after = {'sonokai', 'kanagawa.nvim'},
+        dependencies = {
+            'kyazdani42/nvim-web-devicons',
+        },
         config = function()
             require 'tabline'.setup { enable = false }
         end,
-    }
+    },
 
-    use {
+    {
         'nvim-lualine/lualine.nvim',
-        requires = {{ 'kyazdani42/nvim-web-devicons', opt = true }},
-        after = {'tabline.nvim'},
+        dependencies = {
+            { 'kyazdani42/nvim-web-devicons', lazy = false },
+        },
         config = function()
             local tabline = require('tabline')
             require 'lualine'.setup {
@@ -213,9 +222,9 @@ return require 'packer'.startup{function(use)
                 }
             }
         end,
-    }
+    },
 
-    use {
+    {
         'jakewvincent/mkdnflow.nvim',
         config = function()
             require 'mkdnflow'.setup {
@@ -231,9 +240,9 @@ return require 'packer'.startup{function(use)
                 },
             }
         end,
-    }
+    },
 
-    use {
+    {
         'stevearc/dressing.nvim',
         config = function()
             require 'dressing'.setup{
@@ -242,11 +251,5 @@ return require 'packer'.startup{function(use)
                 }
             }
         end,
-    }
-
-end,
-config = {
-    display = {
-        open_fn = require 'packer.util'.float,
-    }
-}}
+    },
+})
