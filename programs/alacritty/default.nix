@@ -16,7 +16,7 @@
     settings.font.size = lib.mkDefault 12;
 
     settings.font.normal = lib.mkDefault {
-      family = "FuraMono Nerd Font Mono";
+      family = "FiraCode Nerd Font Mono";
       style = "Regular";
     };
   };

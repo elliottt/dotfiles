@@ -36,10 +36,14 @@ in {
     pkgs.wasmi
     pkgs.util-linux
 
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+
     (nixGLWrap "wezterm" pkgs.wezterm)
 
     wasm-tools
   ];
+
+  fonts.fontconfig.enable = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
