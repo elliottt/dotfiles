@@ -9,7 +9,7 @@
       y = 5;
     };
 
-    settings.key_bindings = lib.mkDefault [
+    settings.keyboard.bindings = lib.mkDefault [
       { key = "F11"; action = "ToggleFullscreen"; }
     ];
 
