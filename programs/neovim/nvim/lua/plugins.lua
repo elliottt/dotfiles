@@ -188,12 +188,12 @@ return require 'lazy'.setup({
     },
 
     -- Statuslines
-    'kyazdani42/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
 
     {
         'kdheepak/tabline.nvim',
         dependencies = {
-            'kyazdani42/nvim-web-devicons',
+            'nvim-tree/nvim-web-devicons',
         },
         config = function()
             require 'tabline'.setup { enable = false }
@@ -203,7 +203,7 @@ return require 'lazy'.setup({
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
-            'kyazdani42/nvim-web-devicons',
+            'nvim-tree/nvim-web-devicons',
         },
         config = function()
             local tabline = require('tabline')
