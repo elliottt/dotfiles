@@ -41,8 +41,8 @@ return require 'lazy'.setup({
     {
         'nvim-telescope/telescope.nvim',
         dependencies = {
-            { 'nvim-lua/plenary.nvim', lazy = false },
-            { 'nvim-telescope/telescope-fzf-native.nvim', lazy = false },
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope-fzf-native.nvim',
         },
         branch = '0.1.x',
         config = function()
@@ -203,7 +203,7 @@ return require 'lazy'.setup({
     {
         'nvim-lualine/lualine.nvim',
         dependencies = {
-            { 'kyazdani42/nvim-web-devicons', lazy = false },
+            'kyazdani42/nvim-web-devicons',
         },
         config = function()
             local tabline = require('tabline')
