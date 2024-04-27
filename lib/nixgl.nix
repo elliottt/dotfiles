@@ -4,7 +4,7 @@ binary: drv: pkgs.symlinkJoin {
   name = "${drv.name}-nixglwrapped";
   paths = [ drv ];
   nativeBuildInputs = [ pkgs.makeBinaryWrapper ];
-  version = drv.version;
+  version = drv.version or "";
   postBuild = ''
     makeBinaryWrapper \
       "${nixGL.auto.nixGLDefault}/bin/nixGL" \
