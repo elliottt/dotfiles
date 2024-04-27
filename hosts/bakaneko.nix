@@ -38,7 +38,9 @@ in {
   # environment.
   home.packages = [
     pkgs.qmk
-    pkgs.nerdfonts
+    pkgs.qmk-udev-rules
+
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
   fonts.fontconfig.enable = true;
