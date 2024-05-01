@@ -108,24 +108,15 @@ wk.register{
     ['S'] = { '<Plug>(leap-backward)', 'Leap backward' },
 }
 
--- vsnip mappings
-local vsnip_keymaps = {
-    ['<c-j>'] = { [[vsnip#expandable() ? '<Plug>(vsnip-expand)' : '<c-j>']], "Expand snippet" },
-    ['<tab>'] = { [[vsnip#jumpable(1)  ? '<Plug>(vsnip-jump-next)' : '<Tab>']] },
-    ['<S-Tab>'] = { [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']] },
-}
-wk.register(vsnip_keymaps, {
-    mode = 'i',
-    noremap = true,
-    expr = true,
-    silent = true,
-})
-wk.register(vsnip_keymaps, {
-    mode = 's',
-    noremap = true,
-    expr = true,
-    silent = true,
-})
+local has_words_before = function()
+  unpack = unpack or table.unpack
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
 
 -- nvim-cmp mappings
 local cmp = require 'cmp'
@@ -148,10 +139,33 @@ cmp.setup{
         ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item{ behavior = cmp.SelectBehavior.Select }, {'i'}),
         ['<c-j>'] = cmp.mapping(cmp.mapping.select_next_item{ behavior = cmp.SelectBehavior.Select }, {'i'}),
         ['<c-k>'] = cmp.mapping(cmp.mapping.select_prev_item{ behavior = cmp.SelectBehavior.Select }, {'i'}),
+
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif vim.fn['vsnip#available'](1) == 1 then
+                feedkey('<Plug>(vsnip-expand-or-jump)', '')
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
+
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif vim.fn['vsnip#jumpable'](-1) == 1 then
+                feedkey('<Plug>(vsnip-jump-prev)', '')
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
     },
 
     sources = cmp.config.sources{
         { name = 'nvim_lsp' },
+        { name = 'vsnip' },
     },
 }
 
