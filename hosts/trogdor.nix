@@ -9,6 +9,7 @@ let
   cbindgen = import ../packages/cbindgen.nix { inherit pkgs; };
   viceroy = import ../packages/viceroy.nix { inherit pkgs; };
   wasm-tools = import ../packages/wasm-tools.nix { inherit pkgs; };
+  wac-cli = import ../packages/wac-cli.nix { inherit pkgs; };
   wit-bindgen = import ../packages/wit-bindgen.nix { inherit pkgs; };
 
 in {
@@ -49,6 +50,7 @@ in {
     cargo-vet
     cbindgen
     viceroy
+    wac-cli
     wasm-tools
     wit-bindgen
   ];
