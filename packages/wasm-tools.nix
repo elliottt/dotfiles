@@ -2,13 +2,13 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "wasm-tools";
-  version = "1.0.54";
+  version = "1.207.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "bytecodealliance";
     repo = "wasm-tools";
-    rev = "wasm-tools-${version}";
-    sha256 = "sha256-10sR+VA0lakAArFzSUWP3p9sKRl8Qf1hwrO8qgzGpZI=";
+    rev = "v${version}";
+    sha256 = "sha256-aDEJmtk/1lwd4+xCdB6/qALvUOzbC8txTi36FhyiwMw=";
   };
 
   # cargo-auditable fails to compile wit-component because of feature issues.
