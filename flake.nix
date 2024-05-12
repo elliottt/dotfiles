@@ -9,21 +9,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixGL = {
+    nixgl = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, nixgl, ... }:
     let
 
       mkHostConfig = cfg:
         let
 
-          system = cfg.system or "x86_64-linux";
-          pkgs = nixpkgs.legacyPackages.${system};
+          pkgs = import nixpkgs {
+            system = cfg.system or "x86_64-linux";
+            overlays = [ nixgl.overlay ];
+          };
 
         in home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
