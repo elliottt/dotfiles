@@ -4,8 +4,9 @@
 
 ```shell
 $ git clone git@github.com:elliottt/dotfiles ~/.dotfiles
-$ mkdir -p ~/.config/home-manager
-$ cd ~/.dotfiles
-$ ln -s "hosts/$(hostname)".nix ~/.config/home-manager/home.nix
-$ home-manager switch
+$ ~/.dotfiles/hm switch
 ```
+
+## Adding a new host
+
+Create a new config in the `hosts` directory, and add an entry in `flake.nix`.
