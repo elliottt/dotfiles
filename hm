@@ -4,4 +4,12 @@ set -euo pipefail
 
 root="$(dirname "${BASH_SOURCE[0]}")"
 
+if ! test -d ~/.config/nix; then
+  mkdir ~/.config/nix
+fi
+
+if ! test -f ~/.config/nix; then
+  echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+fi
+
 exec nix run github:nix-community/home-manager/master -- --flake "$root" "$@"
