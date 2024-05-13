@@ -29,7 +29,16 @@
 
         in home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ cfg.home ];
+          modules = [
+            cfg.home
+            {
+              home.file = {
+                # Linking the host config into the default home.nix location
+                # allows `home-manager edit` to work predictably
+                ".config/home-manager/home.nix".source = cfg.home;
+              };
+            }
+          ];
         };
 
     in {
