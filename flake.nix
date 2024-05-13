@@ -2,7 +2,7 @@
   description = "elliottt's home-manager configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -31,13 +31,7 @@
           inherit pkgs;
           modules = [
             cfg.home
-            {
-              home.file = {
-                # Linking the host config into the default home.nix location
-                # allows `home-manager edit` to work predictably
-                ".config/home-manager/home.nix".source = cfg.home;
-              };
-            }
+            ./home.nix
           ];
         };
 

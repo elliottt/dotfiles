@@ -74,11 +74,11 @@
     pkgs.glow
     pkgs.gum
 
-    # (pkgs.binutils // { meta.priority = 6; })
-    # (pkgs.gcc // { meta.priority = 8; })
+    (pkgs.binutils // { meta.priority = 6; })
+    (pkgs.gcc // { meta.priority = 8; })
 
-    # pkgs.clang_16
-    # pkgs.clang-tools_16
+    pkgs.clang_16
+    pkgs.clang-tools_16
   ];
 
   home.file = {

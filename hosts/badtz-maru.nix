@@ -3,7 +3,6 @@
 {
 
   imports = [
-    ../programs/base
     ../programs/neovim
     ../programs/rust
     ../programs/tmux

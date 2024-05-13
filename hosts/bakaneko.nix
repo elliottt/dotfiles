@@ -6,7 +6,6 @@ in {
   imports = [
     ../programs/alacritty
     ../programs/bakaneko
-    ../programs/base
     ../programs/neovim
     ../programs/rust
     ../programs/tmux

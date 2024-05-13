@@ -12,4 +12,10 @@ if ! test -f ~/.config/nix; then
   echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 fi
 
-exec nix run github:nix-community/home-manager/master -- --flake "$root" "$@"
+# If home-manager doesn't yet exist, set it up and switch to this config
+if ! command -v home-manager >/dev/null; then
+  nix run github:nix-community/home-manager/master -- --flake "$root" switch
+fi
+
+# Run the original command
+exec home-manager --flake "$root" "$@"

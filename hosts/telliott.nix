@@ -6,7 +6,6 @@ let
 in {
   imports = [
     ../programs/alacritty
-    ../programs/base
     ../programs/kitty
     ../programs/neovim
     ../programs/rust
