@@ -3,7 +3,6 @@
 let
 
   cargo-component = import ../packages/cargo-component.nix { inherit pkgs; };
-  cargo-fuzz = import ../packages/cargo-fuzz.nix { inherit pkgs; };
   cargo-nextest = import ../packages/cargo-nextest.nix { inherit pkgs; };
   cargo-vet = import ../packages/cargo-vet.nix { inherit pkgs; };
   cbindgen = import ../packages/cbindgen.nix { inherit pkgs; };
@@ -44,7 +43,6 @@ in {
     pkgs.whois
 
     cargo-component
-    cargo-fuzz
     cargo-nextest
     cargo-vet
     cbindgen

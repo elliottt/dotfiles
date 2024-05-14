@@ -4,11 +4,9 @@ pkgs.rustPlatform.buildRustPackage rec {
   pname = "cargo-vet";
   version = "0.9.1";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "mozilla";
-    repo = "cargo-vet";
-    rev = "5bd670061a22074eb5ee9d69feccc5900df00ec3";
-    sha256 = "sha256-676hoawqU3KTf2TnHdVAdTEgK4NLIOb4zHTmEYm1d1E=";
+  src = pkgs.fetchCrate {
+    inherit pname version;
+    sha256 = "sha256-yRq1YjS33vIlzNxw8k2gEaBt8ew4U8KcEpF6N9gSuK0=";
   };
 
   doCheck = false;
