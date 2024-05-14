@@ -8,7 +8,7 @@ if ! test -d ~/.config/nix; then
   mkdir ~/.config/nix
 fi
 
-if ! test -f ~/.config/nix; then
+if ! test -f ~/.config/nix/nix.conf; then
   echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
 fi
 
