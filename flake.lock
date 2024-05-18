@@ -76,7 +76,41 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixgl": "nixgl",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "two-trucs": "two-trucs",
+        "wit-nvim": "wit-nvim"
+      }
+    },
+    "two-trucs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713836845,
+        "narHash": "sha256-0i5pSb53NpUQk9PzHBTEinx/3nQ2oVquGaBzqY/ZrSo=",
+        "owner": "elliottt",
+        "repo": "two-trucs",
+        "rev": "152a9526ab0eaadfcd3b477a196071e30d7e21c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elliottt",
+        "repo": "two-trucs",
+        "type": "github"
+      }
+    },
+    "wit-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1690568525,
+        "narHash": "sha256-V9zN8c83TtiwrBDK2NoiEi8T3YPjwhc9zf+kTaDIHWY=",
+        "owner": "elliottt",
+        "repo": "wit.nvim",
+        "rev": "87d5bb6ed50b5bc98167ed95309695b245ac0b7f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "elliottt",
+        "repo": "wit.nvim",
+        "type": "github"
       }
     }
   },

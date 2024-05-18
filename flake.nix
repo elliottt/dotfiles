@@ -14,9 +14,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    two-trucs = {
+      url = "github:elliottt/two-trucs";
+      flake = false;
+    };
+
+    wit-nvim = {
+      url = "github:elliottt/wit.nvim";
+      flake = false;
+    };
+
   };
 
-  outputs = { self, nixpkgs, home-manager, nixgl, ... }:
+  outputs = { self, nixpkgs, home-manager, nixgl, two-trucs, wit-nvim, ... }:
     let
 
       mkHostConfig = cfg:
@@ -29,6 +39,7 @@
 
         in home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          extraSpecialArgs = { inherit two-trucs wit-nvim; };
           modules = [
             cfg.home
             ./home.nix
