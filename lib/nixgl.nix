@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixGL ? "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL", ... }:
 
 binary: drv: pkgs.symlinkJoin {
   name = "${drv.name}-nixglwrapped";
@@ -7,7 +7,7 @@ binary: drv: pkgs.symlinkJoin {
   version = drv.version or "";
   postBuild = ''
     makeBinaryWrapper \
-      "${pkgs.nixgl.auto.nixGLDefault}/bin/nixGL" \
+      "${nixGL}" \
       "$out/bin/${binary}" \
       --inherit-argv0 \
       --add-flags "${drv}/bin/${binary}"

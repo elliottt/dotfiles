@@ -2,7 +2,10 @@
 
 let
   wasm-tools = import ../packages/wasm-tools.nix { inherit pkgs; };
-  nixGLWrap = import ../lib/nixgl.nix { inherit pkgs; };
+  nixGLWrap = import ../lib/nixgl.nix {
+    inherit pkgs;
+    nixGL = "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel";
+  };
 in {
   imports = [
     ../programs/alacritty
