@@ -99,11 +99,10 @@ require 'mkdnflow'.setup {
         symbols = { ' ', '-', 'x' }
     },
     modules = {
-        maps = true,
+        folds = false,
     },
-    mappings = {
-        MkdnFoldSection = false,
-        MkdnUnfoldSection = false,
+    links = {
+        conceal = true,
     },
 }
 
