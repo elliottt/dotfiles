@@ -40,7 +40,6 @@ in
     plugins = [
       two-trucs-nvim-pkg
       wit-nvim-pkg
-      pkgs.vimPlugins.plenary-nvim
       pkgs.vimPlugins.telescope-fzf-native-nvim
       pkgs.vimPlugins.telescope-nvim
       pkgs.vimPlugins.vim-repeat
