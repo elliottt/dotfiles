@@ -1,7 +1,10 @@
 { config, pkgs, ... }:
 
 let
-  wrapNixGL = import ../lib/nixgl.nix { inherit pkgs; };
+  wrapNixGL = import ../lib/nixgl.nix {
+    inherit pkgs;
+    nixGL = "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel";
+  };
 in {
   imports = [
     ../programs/alacritty
