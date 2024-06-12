@@ -42,6 +42,8 @@ in {
     pkgs.openssh
     pkgs.fd
     pkgs.whois
+    pkgs.age
+    pkgs.kbs2
 
     cargo-component
     cargo-nextest
