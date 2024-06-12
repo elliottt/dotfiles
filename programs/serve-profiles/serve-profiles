@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+root="$(mktemp -d)"
+trap 'rm -rf $root' EXIT
+
+hostname="$(hostname).local"
+
+cat <<EOF > "${root}/Caddyfile"
+{
+	auto_https disable_redirects
+}
+
+https://${hostname}:8000 {
+	root * .
+	file_server {
+		browse ${root}/browse.template
+	}
+
+	header {
+		Access-Control-Allow-Origin *
+		Access-Control-Allow-Methods "GET, OPTIONS"
+		Access-Control-Max-Age 86400
+		-Server
+	}
+}
+EOF
+
+cat <<EOF > "${root}/browse.template"
+<html>
+  <head>
+  </head>
+  <body>
+    <h1>profiles</h1>
+    <ul>
+      {{- range .Items }}
+        {{- if and (not .IsDir) (.HasExt ".json") }}
+      <li><a target="_blank" href="https://profiler.firefox.com/from-url/https%3A%2F%2F${hostname}%3A8000%2F{{html .Name }}">{{ .Name }}</a></li>
+        {{- end }}
+      {{- end }}
+    </ul>
+  </body>
+</html>
+EOF
+
+@caddy@/bin/caddy run -c "${root}/Caddyfile"

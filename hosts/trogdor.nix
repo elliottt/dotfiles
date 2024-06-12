@@ -19,6 +19,7 @@ in {
     ../programs/tmux
     ../programs/zsh
     ../programs/gdb
+    ../programs/serve-profiles
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
