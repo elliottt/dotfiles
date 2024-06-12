@@ -65,6 +65,7 @@ in
         c
         cpp
         lua
+        markdown
         rust
         typescript
         vim
