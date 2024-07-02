@@ -2,6 +2,7 @@
 
 let
   wasm-tools = import ../packages/wasm-tools.nix { inherit pkgs; };
+  cbindgen = import ../packages/cbindgen.nix { inherit pkgs; };
   nixGLWrap = import ../lib/nixgl.nix {
     inherit pkgs;
     nixGL = "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel";
@@ -43,6 +44,7 @@ in {
     (nixGLWrap "wezterm" pkgs.wezterm)
 
     wasm-tools
+    cbindgen
   ];
 
   fonts.fontconfig.enable = true;
