@@ -44,6 +44,8 @@ in {
     pkgs.whois
     pkgs.age
     pkgs.kbs2
+    pkgs.pass
+    pkgs.docker-credential-helpers
 
     cargo-component
     cargo-nextest
