@@ -2,11 +2,11 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "wit-bindgen-cli";
-  version = "0.24.0";
+  version = "0.26.0";
 
   src = pkgs.fetchCrate {
     inherit pname version;
-    sha256 = "sha256-XvZa80N9rtzmuk6Jrp09Dmm8hwsNZfRPW1kTBpX2nWE=";
+    sha256 = "sha256-lm1cXuo41TZ4CaxheWDQrlhZJovPhgxrHpGp/O0P8+E=";
   };
 
   doCheck = false;
