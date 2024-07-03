@@ -104,6 +104,9 @@ require 'mkdnflow'.setup {
     links = {
         conceal = true,
     },
+    mappings = {
+        MkdnGoBack = false,
+    },
 }
 
 require 'dressing'.setup{
