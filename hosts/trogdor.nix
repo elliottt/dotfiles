@@ -46,6 +46,8 @@ in {
     pkgs.kbs2
     pkgs.pass
     pkgs.docker-credential-helpers
+    pkgs.google-cloud-sdk
+    pkgs.gnupg
 
     cargo-component
     cargo-nextest
@@ -61,6 +63,13 @@ in {
     enable = true;
     forwardAgent = true;
     addKeysToAgent = "yes";
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableZshIntegration = true;
+    defaultCacheTtl = 86400;
+    maxCacheTtl = 86400;
   };
 
   # This value determines the Home Manager release that your configuration is
