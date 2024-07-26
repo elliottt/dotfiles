@@ -44,7 +44,7 @@ in
       pkgs.vimPlugins.telescope-nvim
       pkgs.vimPlugins.vim-repeat
       pkgs.vimPlugins.vim-fugitive
-      pkgs.vimPlugins.vim-surround
+      pkgs.vimPlugins.nvim-surround
       pkgs.vimPlugins.which-key-nvim
       pkgs.vimPlugins.comment-nvim
       pkgs.vimPlugins.leap-nvim

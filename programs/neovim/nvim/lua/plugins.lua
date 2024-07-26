@@ -56,6 +56,8 @@ require 'Comment'.setup()
 
 require 'leap'.setup{}
 
+require 'nvim-surround'.setup{}
+
 require 'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
