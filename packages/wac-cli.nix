@@ -2,14 +2,21 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "wac-cli";
-  version = "0.16.0";
+  version = "0.5.0";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "bytecodealliance";
-    repo = "wac";
-    rev = "088a728f732afaba95ee9eb93e14dda022e0f1f9";
-    sha256 = "sha256-sJES8T7RI/JVdB96Dz3IfMYrgtPMX4CdMwDnucgBqps=";
+  src = pkgs.fetchCrate {
+    inherit pname version;
+    sha256 = "sha256-3s1xQ2jojU9Mhpn2W3E863E2aprJsL4RFTnfYTGx9A4=";
   };
+
+  nativeBuildInputs = [
+    pkgs.pkg-config
+    pkgs.openssl.dev
+  ];
+
+  buildInputs = [
+    pkgs.openssl
+  ];
 
   doCheck = false;
 

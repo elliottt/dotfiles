@@ -2,11 +2,11 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "viceroy";
-  version = "0.9.6";
+  version = "0.10.2";
 
   src = pkgs.fetchCrate {
     inherit pname version;
-    sha256 = "sha256-Bu36pAXKIQLYho/iVYeK+8LXddyvMXwHtpJTqxAg++c=";
+    sha256 = "sha256-G9hVSLLUO56cYHksa5C1gtp/WO1Sls23kzVVkjC/qkE=";
   };
 
   nativeBuildInputs = [

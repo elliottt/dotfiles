@@ -2,11 +2,11 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "wasm-tools";
-  version = "1.207.0";
+  version = "1.214.0";
 
   src = pkgs.fetchCrate {
     inherit pname version;
-    sha256 = "sha256-UaiQpLkNhGmeQaZ3d4ROHFZeX4ULOUWwv2HBGpNUz0I=";
+    sha256 = "sha256-7kkcNTLlIvslb1rZ4eaHJq7UAL3R8M0JFZHwgAKQrkY=";
   };
 
   # cargo-auditable fails to compile wit-component because of feature issues.

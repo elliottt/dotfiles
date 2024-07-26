@@ -2,13 +2,11 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "cargo-component";
-  version = "0.11.0";
+  version = "0.14.0";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "bytecodealliance";
-    repo = pname;
-    rev = "v${version}";
-    sha256 = "sha256-XUzXqzgAIZKWNpfyBvkYX/g1R8JcIJlVTUb2N4zL96w=";
+  src = pkgs.fetchCrate {
+    inherit pname version;
+    sha256 = "sha256-/kW6si2GE6C7O5ALpk7SQGDIFlxxGDdTiBNybV+1osU=";
   };
 
   nativeBuildInputs = [
