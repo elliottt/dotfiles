@@ -4,9 +4,9 @@ vim.g.maplocalleader = vim.api.nvim_replace_termcodes('<BS>', false, false, true
 
 local wk = require 'which-key'
 
-wk.register({
-    ['jk'] = { '<esc>', 'Escape shortcut' },
-}, { mode = 'i' })
+wk.add{
+    { 'jk', '<esc>', desc = 'Escape shortcut', mode = 'i' },
+}
 
 local telescope = require 'telescope.builtin'
 
@@ -74,38 +74,38 @@ local function close_buffer()
     vim.cmd('quit')
 end
 
-wk.register{
+wk.add{
     -- fzf
-    ['<leader>b'] = { '<cmd>Telescope buffers<cr>', 'Buffers' },
-    ['<leader>f'] = { '<cmd>Telescope find_files<cr>', 'Files' },
-    ['<leader>t'] = { '<cmd>Telescope tags<cr>', 'Tags' },
+    { '<leader>b', '<cmd>Telescope buffers<cr>', desc = 'Buffers' },
+    { '<leader>f', '<cmd>Telescope find_files<cr>', desc = 'Files' },
+    { '<leader>t', '<cmd>Telescope tags<cr>', desc = 'Tags' },
 
     -- git
-    ['<leader>g'] = { '<cmd>Git<cr>', 'Git' },
+    { '<leader>g', '<cmd>Git<cr>', desc = 'Git' },
 
     -- text operations
-    ['<leader>U'] = { 'gUaw', 'Uppercase word' },
-    ['<leader>u'] = { 'guaw', 'Lowercase word' },
-    ['<leader>l'] = { telescope.live_grep, 'Live grep' },
+    { '<leader>U', 'gUaw', desc = 'Uppercase word' },
+    { '<leader>u', 'guaw', desc = 'Lowercase word' },
+    { '<leader>l', telescope.live_grep, desc = 'Live grep' },
 
     -- misc
-    ['<leader>h'] = { '<cmd>noh<cr>', 'Clear highlighting' },
-    ['<leader>p'] = { toggle_paste, 'Toggle paste mode' },
+    { '<leader>h', '<cmd>noh<cr>', desc = 'Clear highlighting' },
+    { '<leader>p', toggle_paste, desc = 'Toggle paste mode' },
 
     -- buffer management
-    ['<c-n>'] = { '<cmd>bnext<cr>', 'Next buffer' },
-    ['<c-p>'] = { '<cmd>bprevious<cr>', 'Previous buffer' },
-    ['<c-d>'] = { close_buffer, 'Close buffer' },
+    { '<c-n>', '<cmd>bnext<cr>', desc = 'Next buffer' },
+    { '<c-p>', '<cmd>bprevious<cr>', desc = 'Previous buffer' },
+    { '<c-d>', close_buffer, desc = 'Close buffer' },
 
     -- list navigation
-    ['[q'] = { '<cmd>cprev<cr>', 'Previous quickfix item' },
-    [']q'] = { '<cmd>cnext<cr>', 'Next quickfix item' },
-    ['[l'] = { '<cmd>lprev<cr>', 'Previous location item' },
-    [']l'] = { '<cmd>lnext<cr>', 'Next location item' },
+    { '[q', '<cmd>cprev<cr>', desc = 'Previous quickfix item' },
+    { ']q', '<cmd>cnext<cr>', desc = 'Next quickfix item' },
+    { '[l', '<cmd>lprev<cr>', desc = 'Previous location item' },
+    { ']l', '<cmd>lnext<cr>', desc = 'Next location item' },
 
     -- leap
-    ['s'] = { '<Plug>(leap-forward)', 'Leap forward' },
-    ['S'] = { '<Plug>(leap-backward)', 'Leap backward' },
+    { 's', '<Plug>(leap-forward)', desc = 'Leap forward' },
+    { 'S', '<Plug>(leap-backward)', desc = 'Leap backward' },
 }
 
 local has_words_before = function()
@@ -173,25 +173,24 @@ cmp.setup{
 local function lsp_attach(_, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    wk.register({
-        ['<localleader>f'] = { '<cmd>lua LspUtil.format()<cr>', 'Format' },
-        ['<localleader>a'] = { '<cmd>lua LspUtil.code_action()<cr>', 'Code actions' },
-        ['<localleader>rn'] = { '<cmd>lua LspUtil.rename()<cr>', 'Rename' },
-        ['<localleader>k'] = { '<cmd>lua LspUtil.diagnostic.open()<cr>', 'Line diagnostics' },
-        ['<localleader>d'] = { '<cmd>Telescope lsp_diagnostics<cr>', 'Diagnostics' },
-        ['<localleader>s'] = { '<cmd>Telescope lsp_document_symbols<cr>', 'Document symbols' },
-        ['K'] = { '<cmd>lua LspUtil.hover()<cr>', 'Hover' },
-        ['gd'] = { '<cmd>Telescope lsp_definitions<cr>', 'Go to definition' },
-        ['gD'] = { '<cmd>Telescope lsp_type_definitions<cr>', 'Go to declaration' },
-        ['gi'] = { '<cmd>Telescope lsp_implementations<cr>', 'Go to implementation' },
-        ['gr'] = { '<cmd>Telescope lsp_references<cr>', 'Find all references' },
-        ['[d'] = { '<cmd>lua LspUtil.diagnostic.prev()<cr>', 'Previous diagnostic' },
-        [']d'] = { '<cmd>lua LspUtil.diagnostic.next()<cr>', 'Next diagnostic' },
-    }, {
-        buffer = bufnr,
+    wk.add{
         mode = 'n',
         silent = true,
-    })
+        buffer = bufnr,
+        { '<localleader>f', '<cmd>lua LspUtil.format()<cr>', desc = 'Format' },
+        { '<localleader>a', '<cmd>lua LspUtil.code_action()<cr>', desc = 'Code actions' },
+        { '<localleader>rn', '<cmd>lua LspUtil.rename()<cr>', desc = 'Rename' },
+        { '<localleader>k', '<cmd>lua LspUtil.diagnostic.open()<cr>', desc = 'Line diagnostics' },
+        { '<localleader>d', '<cmd>Telescope lsp_diagnostics<cr>', desc = 'Diagnostics' },
+        { '<localleader>s', '<cmd>Telescope lsp_document_symbols<cr>', desc = 'Document symbols' },
+        { 'K', '<cmd>lua LspUtil.hover()<cr>', desc = 'Hover' },
+        { 'gd', '<cmd>Telescope lsp_definitions<cr>', desc = 'Go to definition' },
+        { 'gD', '<cmd>Telescope lsp_type_definitions<cr>', desc = 'Go to declaration' },
+        { 'gi', '<cmd>Telescope lsp_implementations<cr>', desc = 'Go to implementation' },
+        { 'gr', '<cmd>Telescope lsp_references<cr>', desc = 'Find all references' },
+        { '[d', '<cmd>lua LspUtil.diagnostic.prev()<cr>', desc = 'Previous diagnostic' },
+        { ']d', '<cmd>lua LspUtil.diagnostic.next()<cr>', desc = 'Next diagnostic' },
+    }
 end
 
 return { lsp_attach = lsp_attach }
