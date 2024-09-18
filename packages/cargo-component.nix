@@ -2,11 +2,11 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "cargo-component";
-  version = "0.14.0";
+  version = "0.16.0";
 
   src = pkgs.fetchCrate {
     inherit pname version;
-    sha256 = "sha256-/kW6si2GE6C7O5ALpk7SQGDIFlxxGDdTiBNybV+1osU=";
+    sha256 = "sha256-7YgCgx+SZicMeuYaXqYdmaNQUJ4Gv4ECJf9kuL9X+LY=";
   };
 
   nativeBuildInputs = [
