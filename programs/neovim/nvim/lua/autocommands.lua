@@ -44,14 +44,13 @@ augroup("extra_filetypedetect", function(au)
     au({"BufNewFile", "BufRead"}, {
         pattern = "*.md",
         callback = function()
-            wk.register({
-                ["<localleader>f"] = { "<cmd>TTSort<cr>", "Format" },
-                ["<localleader>n"] = { "<cmd>TTNext<cr>", "New TODO group" },
-            }, {
-                mode = "n",
-                buffer = vim.api.nvim_get_current_buf(),
-                noremap = true,
-            })
+            wk.add{
+                mode = 'n',
+                silent = true,
+                buffer = bufnr,
+                { '<localleader>f', '<cmd>TTSort<cr>', desc = 'Format' },
+                { '<localleader>n', '<cmd>TTNext<cr>', desc = 'New TODO group' },
+            }
         end,
     })
 end)
