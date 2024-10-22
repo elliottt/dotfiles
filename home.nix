@@ -7,7 +7,6 @@
   # the home-manager env vars are sourced in ~/.profile. That script contains
   # the definitions of things like `XDG_DATA_DIRS` which are used by gnome3 to
   # find .desktop files that describe what can be launched.
-  targets.genericLinux.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -73,12 +72,6 @@
     pkgs.hyperfine
     pkgs.glow
     pkgs.gum
-
-    (pkgs.binutils // { meta.priority = 6; })
-    (pkgs.gcc // { meta.priority = 8; })
-
-    pkgs.clang_16
-    pkgs.clang-tools_16
   ];
 
   home.file = {

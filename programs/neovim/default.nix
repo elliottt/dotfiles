@@ -1,4 +1,4 @@
-{ pkgs, two-trucs, wit-nvim, ... }:
+{ pkgs, use-two-trucs ? true, two-trucs, wit-nvim, ... }:
 
 let
   two-trucs-bin = pkgs.rustPlatform.buildRustPackage rec {
@@ -38,7 +38,6 @@ in
     defaultEditor = true;
 
     plugins = [
-      two-trucs-nvim-pkg
       wit-nvim-pkg
       pkgs.vimPlugins.telescope-fzf-native-nvim
       pkgs.vimPlugins.telescope-nvim
@@ -70,7 +69,7 @@ in
         typescript
         vim
       ]))
-    ];
+    ] ++ (if use-two-trucs then [ two-trucs-nvim-pkg ] else []);
 
     extraLuaConfig = ''
 

@@ -20,6 +20,8 @@ in {
   home.username = "trevor";
   home.homeDirectory = "/home/trevor";
 
+  targets.genericLinux.enable = true;
+
   programs.git.userEmail = "awesomelyawesome@gmail.com";
 
   # Override some alacritty settings
@@ -43,6 +45,12 @@ in {
     pkgs.qmk-udev-rules
 
     (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+
+    (pkgs.binutils // { meta.priority = 6; })
+    (pkgs.gcc // { meta.priority = 8; })
+
+    pkgs.clang_16
+    pkgs.clang-tools_16
   ];
 
   fonts.fontconfig.enable = true;

@@ -1,10 +1,8 @@
 { config, pkgs, ... }:
 
 {
-
   imports = [
     ../programs/neovim
-    ../programs/rust
     ../programs/tmux
     ../programs/zsh
   ];
@@ -12,22 +10,13 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "trevor";
-  home.homeDirectory = "/home/trevor";
+  home.homeDirectory = "/Users/trevor";
 
-  targets.genericLinux.enable = true;
-
-  programs.git.userEmail = "awesomelyawesome@gmail.com";
+  programs.git.userEmail = "trevor@stripe.com";
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    pkgs.p7zip
-
-    (pkgs.binutils // { meta.priority = 6; })
-    (pkgs.gcc // { meta.priority = 8; })
-
-    pkgs.clang_16
-    pkgs.clang-tools_16
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -39,5 +28,20 @@
   # release notes.
   home.stateVersion = "23.11"; # Please read the comment before changing.
 
-  services.ssh-agent.enable = true;
+  programs.zsh.initExtra = ''
+    ### BEGIN STRIPE
+    # All Stripe related shell configuration
+    # is at ~/.stripe/shellinit/zshrc and is
+    # persistently managed by Chef. You shouldn't
+    # remove this unless you don't want to load
+    # Stripe specific shell configurations.
+    #
+    # Feel free to add your customizations in this
+    # file (~/.zshrc) after the Stripe config
+    # is sourced.
+    if [[ -f ~/.stripe/shellinit/zshrc ]]; then
+      source ~/.stripe/shellinit/zshrc
+    fi
+    ### END STRIPE
+  '';
 }

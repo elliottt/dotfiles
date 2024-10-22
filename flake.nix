@@ -39,7 +39,10 @@
 
         in home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit two-trucs wit-nvim; };
+          extraSpecialArgs = {
+	    inherit two-trucs wit-nvim;
+	    use-two-trucs = cfg.two-trucs or true;
+	  };
           modules = [
             cfg.home
             ./home.nix
@@ -64,6 +67,12 @@
         "trevor@trogdor" = mkHostConfig {
           home = ./hosts/trogdor.nix;
         };
+
+	"trevor@st-trevor1" = mkHostConfig {
+	  home = ./hosts/st-trevor1.nix;
+	  system = "aarch64-darwin";
+	  two-trucs = false;
+	};
 
       };
     };
