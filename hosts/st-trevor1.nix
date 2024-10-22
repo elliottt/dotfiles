@@ -14,9 +14,13 @@
 
   programs.git.userEmail = "trevor@stripe.com";
 
+  # Override some alacritty settings
+  programs.alacritty.settings.font.normal.family = "FiraCodeNerdFontMono";
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -44,4 +48,19 @@
     fi
     ### END STRIPE
   '';
+
+  home.file = {
+    ".config/alacritty/alacritty.toml".text = ''
+      [window.padding]
+      x = 5
+      y = 5
+
+      [font]
+      size = 12
+
+      [font.normal]
+      family = "FiraCode Nerd Font Mono"
+      style = "Regular"
+    '';
+  };
 }
