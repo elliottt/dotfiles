@@ -35,10 +35,8 @@
 
   programs.gh = {
     enable = true;
-    settings = {
-      git_protocol = "ssh";
-      aliases.co = "pr checkout";
-    };
+    settings.git_protocol = "ssh";
+    settings.aliases.co = "pr checkout";
   };
 
   programs.git = {

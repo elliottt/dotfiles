@@ -13,6 +13,7 @@
   home.homeDirectory = "/Users/trevor";
 
   programs.git.userEmail = "trevor@stripe.com";
+  programs.gh.settings.http_unix_socket = "/Users/trevor/.stripeproxy";
 
   # Override some alacritty settings
   programs.alacritty.settings.font.normal.family = "FiraCodeNerdFontMono";
