@@ -23,6 +23,7 @@
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     parallel
+    hub
   ];
 
   # This value determines the Home Manager release that your configuration is
