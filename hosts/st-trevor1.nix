@@ -39,8 +39,7 @@
     # From stripe IT department
     export PATH="$HOME/stripe/henson/bin:$PATH"
     export PATH="$PATH:$HOME/stripe/space-commander/bin"
-    source "$HOME/.rbenvrc"
-    rbenv rehash
+    eval "$(rbenv init -)"
     eval "$(nodenv init -)"
   '';
 
