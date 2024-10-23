@@ -8,8 +8,6 @@ wk.add{
     { 'jk', '<esc>', desc = 'Escape shortcut', mode = 'i' },
 }
 
-local telescope = require 'telescope.builtin'
-
 -- Toggle all the stuff needed to get into a reasonable mode for copy/paste from elsewhere. This
 -- assumes that number and relativenumber are already on.
 local function toggle_paste()
@@ -76,9 +74,9 @@ end
 
 wk.add{
     -- fzf
-    { '<leader>b', '<cmd>Telescope buffers<cr>', desc = 'Buffers' },
-    { '<leader>f', '<cmd>Telescope find_files<cr>', desc = 'Files' },
-    { '<leader>t', '<cmd>Telescope tags<cr>', desc = 'Tags' },
+    { '<leader>b', '<cmd>FzfLua buffers<cr>', desc = 'Buffers' },
+    { '<leader>f', '<cmd>FzfLua files<cr>', desc = 'Files' },
+    { '<leader>t', '<cmd>FzfLua tags<cr>', desc = 'Tags' },
 
     -- git
     { '<leader>g', '<cmd>Git<cr>', desc = 'Git' },
@@ -86,7 +84,7 @@ wk.add{
     -- text operations
     { '<leader>U', 'gUaw', desc = 'Uppercase word' },
     { '<leader>u', 'guaw', desc = 'Lowercase word' },
-    { '<leader>l', telescope.live_grep, desc = 'Live grep' },
+    { '<leader>l', '<cmd>FzfLua lines<cr>', desc = 'Live grep' },
 
     -- misc
     { '<leader>h', '<cmd>noh<cr>', desc = 'Clear highlighting' },
@@ -181,13 +179,12 @@ local function lsp_attach(_, bufnr)
         { '<localleader>a', '<cmd>lua LspUtil.code_action()<cr>', desc = 'Code actions' },
         { '<localleader>rn', '<cmd>lua LspUtil.rename()<cr>', desc = 'Rename' },
         { '<localleader>k', '<cmd>lua LspUtil.diagnostic.open()<cr>', desc = 'Line diagnostics' },
-        { '<localleader>d', '<cmd>Telescope lsp_diagnostics<cr>', desc = 'Diagnostics' },
-        { '<localleader>s', '<cmd>Telescope lsp_document_symbols<cr>', desc = 'Document symbols' },
+        { '<localleader>d', '<cmd>FzfLua lsp_document_diagnostics<cr>', desc = 'Diagnostics' },
+        { '<localleader>s', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document symbols' },
         { 'K', '<cmd>lua LspUtil.hover()<cr>', desc = 'Hover' },
-        { 'gd', '<cmd>Telescope lsp_definitions<cr>', desc = 'Go to definition' },
-        { 'gD', '<cmd>Telescope lsp_type_definitions<cr>', desc = 'Go to declaration' },
-        { 'gi', '<cmd>Telescope lsp_implementations<cr>', desc = 'Go to implementation' },
-        { 'gr', '<cmd>Telescope lsp_references<cr>', desc = 'Find all references' },
+        { 'gd', '<cmd>FzfLua lsp_definitions<cr>', desc = 'Go to definition' },
+        { 'gi', '<cmd>FzfLua lsp_implementations<cr>', desc = 'Go to implementation' },
+        { 'gr', '<cmd>FzfLua lsp_references<cr>', desc = 'Find all references' },
         { '[d', '<cmd>lua LspUtil.diagnostic.prev()<cr>', desc = 'Previous diagnostic' },
         { ']d', '<cmd>lua LspUtil.diagnostic.next()<cr>', desc = 'Next diagnostic' },
     }

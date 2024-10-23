@@ -39,8 +39,7 @@ in
 
     plugins = [
       wit-nvim-pkg
-      pkgs.vimPlugins.telescope-fzf-native-nvim
-      pkgs.vimPlugins.telescope-nvim
+      pkgs.vimPlugins.fzf-lua
       pkgs.vimPlugins.vim-repeat
       pkgs.vimPlugins.vim-fugitive
       pkgs.vimPlugins.nvim-surround
