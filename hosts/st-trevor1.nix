@@ -19,8 +19,10 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+  home.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+
+    parallel
   ];
 
   # This value determines the Home Manager release that your configuration is
