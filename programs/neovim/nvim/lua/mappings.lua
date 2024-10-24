@@ -84,7 +84,7 @@ wk.add{
     -- text operations
     { '<leader>U', 'gUaw', desc = 'Uppercase word' },
     { '<leader>u', 'guaw', desc = 'Lowercase word' },
-    { '<leader>l', '<cmd>FzfLua lines<cr>', desc = 'Live grep' },
+    { '<leader>l', '<cmd>FzfLua blines<cr>', desc = 'Buffer lines' },
 
     -- misc
     { '<leader>h', '<cmd>noh<cr>', desc = 'Clear highlighting' },
