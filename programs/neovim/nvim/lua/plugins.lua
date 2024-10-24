@@ -1,6 +1,10 @@
 -- vim: foldmethod=marker
 
-require 'fzf-lua'.setup{}
+require 'fzf-lua'.setup{
+    defaults = {
+        jump_to_single_result = true,
+    }
+}
 
 require 'which-key'.setup()
 
