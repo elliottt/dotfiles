@@ -26,6 +26,8 @@
     parallel
     hub
     rsync
+    fd
+    git-absorb
   ];
 
   # This value determines the Home Manager release that your configuration is
