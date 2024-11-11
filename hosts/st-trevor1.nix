@@ -28,23 +28,26 @@
     rsync
     fd
     git-absorb
+    graphviz
   ];
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.11"; # Please read the comment before changing.
+  # Helpful aliases for fetching branches that are skipped by default.
+  programs.git.aliases = {
+    "remote-fetch" = "!rf() { git config --add remote.origin.fetch +refs/heads/$1:refs/remotes/origin/$1; git fetch origin +$1:refs/remotes/origin/$1; }; rf";
+    "remote-purge" = "!rp() { git config --unset remote.origin.fetch \".*$1.*\"; git update-ref -d refs/remotes/origin/$1; }; rp";
+  };
 
   programs.zsh.initExtra = ''
     # From stripe IT department
+    export PATH="/opt/homebrew/bin:$PATH"
     export PATH="$HOME/stripe/henson/bin:$PATH"
     export PATH="$PATH:$HOME/stripe/space-commander/bin"
     eval "$(rbenv init -)"
     eval "$(nodenv init -)"
+
+    if [[ ! $(command -v nix) && -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
+      source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    fi
   '';
 
   home.file = {
@@ -61,4 +64,13 @@
       style = "Regular"
     '';
   };
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "23.11"; # Please read the comment before changing.
 }
