@@ -29,7 +29,15 @@
     fd
     git-absorb
     graphviz
+    nodenv
+    watchman
+    rsync
   ];
+
+  programs.rbenv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   # Helpful aliases for fetching branches that are skipped by default.
   programs.git.aliases = {
@@ -37,17 +45,21 @@
     "remote-purge" = "!rp() { git config --unset remote.origin.fetch \".*$1.*\"; git update-ref -d refs/remotes/origin/$1; }; rp";
   };
 
-  programs.zsh.initExtra = ''
-    # From stripe IT department
-    export PATH="/opt/homebrew/bin:$PATH"
-    export PATH="$HOME/stripe/henson/bin:$PATH"
-    export PATH="$PATH:$HOME/stripe/space-commander/bin"
-    eval "$(rbenv init -)"
-    eval "$(nodenv init -)"
-
+  programs.zsh.profileExtra = ''
+    # Ensure that nix survives osx updates
     if [[ ! $(command -v nix) && -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]]; then
       source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
     fi
+  '';
+
+  programs.zsh.envExtra = ''
+    # From stripe IT department
+    export PATH="$HOME/stripe/henson/bin:$PATH"
+    export PATH="$PATH:$HOME/stripe/space-commander/bin"
+  '';
+
+  programs.zsh.initExtra = ''
+    eval "$(nodenv init -)"
   '';
 
   home.file = {
