@@ -78,6 +78,7 @@ LspUtil = {
     },
 }
 
+local util = require 'lspconfig.util'
 local capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 return {
@@ -115,11 +116,18 @@ return {
                 "--lsp",
                 "--enable-all-experimental-lsp-features",
             }
+            sorbet_opts.root_dir = util.root_pattern(".git")
         else
             local local_sorbet_build = vim.fn.glob(home.."/stripe/sorbet/bazel-bin/main/sorbet")
             if local_sorbet_build ~= "" then
                 -- prefer a local build of sorbet if it's available
-                sorbet_opts.cmd = { local_sorbet_build, "--lsp", "--silence-dev-message" }
+                sorbet_opts.cmd = {
+                    local_sorbet_build,
+                    "--silence-dev-message",
+                    "--lsp",
+                    "--enable-all-experimental-lsp-features",
+                    ".",
+                }
             end
         end
         lsp.sorbet.setup(sorbet_opts)
