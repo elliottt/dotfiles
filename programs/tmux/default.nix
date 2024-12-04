@@ -9,8 +9,8 @@
     prefix = "C-t";
 
     extraConfig = ''
-      # Ensure that new shells are login shells
-      set -g default-command "/bin/zsh -l"
+      # Make sure to pick up all zsh config by starting an interactive shell
+      set -g default-command "/bin/zsh -i"
 
       # Use v and s to split windows, like vim
       bind-key v split-window -h -c '#{pane_current_path}'
