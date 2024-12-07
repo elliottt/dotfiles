@@ -1,12 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ../programs/neovim
-    ../programs/tmux
-    ../programs/zsh
-  ];
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "trevor";

@@ -11,11 +11,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Unfree program filter
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      "zoom"
-    ];
+  imports = [
+    ./programs/neovim
+    ./programs/tmux
+    ./programs/zsh
+    ./programs/bazel
+  ];
 
   programs.bat.enable = true;
 
@@ -32,6 +33,7 @@
       "--layout=reverse"
     ];
   };
+
 
   programs.gh = {
     enable = true;
@@ -64,12 +66,11 @@
 
   programs.ripgrep.enable = true;
 
-  home.packages = [
-    pkgs.gnumake
-    pkgs.bazelisk
-    pkgs.hyperfine
-    pkgs.glow
-    pkgs.gum
+  home.packages = with pkgs; [
+    gnumake
+    hyperfine
+    glow
+    gum
   ];
 
   home.file = {

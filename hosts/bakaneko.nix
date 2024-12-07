@@ -9,10 +9,7 @@ in {
   imports = [
     ../programs/alacritty
     ../programs/bakaneko
-    ../programs/neovim
     ../programs/rust
-    ../programs/tmux
-    ../programs/zsh
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -40,17 +37,17 @@ in {
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.qmk
-    pkgs.qmk-udev-rules
+  home.packages = with pkgs; [
+    qmk
+    qmk-udev-rules
 
-    (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
 
-    (pkgs.binutils // { meta.priority = 6; })
-    (pkgs.gcc // { meta.priority = 8; })
+    (binutils // { meta.priority = 6; })
+    (gcc // { meta.priority = 8; })
 
-    pkgs.clang_16
-    pkgs.clang-tools_16
+    clang_16
+    clang-tools_16
   ];
 
   fonts.fontconfig.enable = true;

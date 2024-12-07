@@ -48,7 +48,11 @@
       if-shell "[ \"$TERM\" = \"alacritty\" ]" {
         set -g default-terminal "alacritty"
       } {
-        set -g default-terminal "screen-256color"
+        if-shell "[ \"$TERM\" = \"xterm-256color\" ]" {
+          set -g default-terminal "xterm-256color"
+        } {
+          set -g default-terminal "screen-256color"
+        }
       }
 
       # Reloading

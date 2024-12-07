@@ -1,14 +1,6 @@
 { config, pkgs, ... }:
 
 {
-
-  imports = [
-    ../programs/neovim
-    ../programs/rust
-    ../programs/tmux
-    ../programs/zsh
-  ];
-
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "trevor";
@@ -20,14 +12,14 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.p7zip
+  home.packages = with pkgs; [
+    p7zip
 
-    (pkgs.binutils // { meta.priority = 6; })
-    (pkgs.gcc // { meta.priority = 8; })
+    (binutils // { meta.priority = 6; })
+    (gcc // { meta.priority = 8; })
 
-    pkgs.clang_16
-    pkgs.clang-tools_16
+    clang_16
+    clang-tools_16
   ];
 
   # This value determines the Home Manager release that your configuration is
