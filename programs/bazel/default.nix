@@ -1,11 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    bazel
-    bazelisk
-  ];
-
   programs.zsh.initExtra = ''
     # Bazel autocompletion for fzf
     _fzf_complete_bazelisk() {

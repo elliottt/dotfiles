@@ -24,7 +24,6 @@ in {
   # Override some alacritty settings
   programs.alacritty.package = wrapNixGL "alacritty" pkgs.alacritty;
   programs.alacritty.settings.font.size = 8;
-  programs.alacritty.settings.font.normal.family = "FiraCodeNerdFontMono";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -40,8 +39,6 @@ in {
   home.packages = with pkgs; [
     qmk
     qmk-udev-rules
-
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
 
     (binutils // { meta.priority = 6; })
     (gcc // { meta.priority = 8; })

@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  home.packages = with pkgs; [
+    nerd-fonts.fira-code
+  ];
+
   programs.alacritty = with pkgs; {
     enable = true;
 
@@ -16,7 +20,7 @@
     settings.font.size = lib.mkDefault 12;
 
     settings.font.normal = lib.mkDefault {
-      family = "FiraCode Nerd Font Mono";
+      family = "FiraCodeNerdFontMono";
       style = "Regular";
     };
   };

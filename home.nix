@@ -18,6 +18,8 @@
     ./programs/bazel
   ];
 
+  fonts.fontconfig.enable = true;
+
   programs.bat.enable = true;
 
   programs.direnv = {
@@ -32,6 +34,7 @@
     defaultOptions = [
       "--layout=reverse"
     ];
+    defaultCommand = "${pkgs.fd}/bin/fd --type f";
   };
 
 

@@ -9,13 +9,10 @@
   programs.git.userEmail = "trevor@stripe.com";
   programs.gh.settings.http_unix_socket = "/Users/trevor/.stripeproxy";
 
-  # Override some alacritty settings
-  programs.alacritty.settings.font.normal.family = "FiraCodeNerdFontMono";
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
 
     parallel
     hub
