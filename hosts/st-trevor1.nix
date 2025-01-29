@@ -23,6 +23,13 @@
     nodenv
     watchman
     rsync
+    vale
+    wget
+    shellcheck
+    awscli2
+
+    python3
+    python3Packages.lmdb
   ];
 
   programs.rbenv = {
