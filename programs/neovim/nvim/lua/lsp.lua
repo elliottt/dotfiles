@@ -100,6 +100,13 @@ return {
             }
         end
 
+        if vim.fn.glob("bin/gopls.sh") ~= "" then
+            lsp.gopls.setup {
+                cmd = { "bin/gopls.sh" },
+                on_attach = mappings.lsp_attach,
+            }
+        end
+
         -- sorbet config
         local sorbet_opts = {
             on_attach = mappings.lsp_attach,
