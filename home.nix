@@ -42,6 +42,7 @@
     enable = true;
     settings.git_protocol = "ssh";
     settings.aliases.co = "pr checkout";
+    settings.aliases.mine = "pr list --author @me";
   };
 
   programs.git = {
