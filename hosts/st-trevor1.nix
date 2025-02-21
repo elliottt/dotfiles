@@ -28,8 +28,9 @@
     shellcheck
     awscli2
 
-    python3
-    python3Packages.lmdb
+    (python3.withPackages (pythonPackages: [
+      pythonPackages.lmdb
+    ]))
   ];
 
   programs.rbenv = {
