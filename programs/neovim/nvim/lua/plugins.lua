@@ -2,7 +2,7 @@
 
 require 'fzf-lua'.setup{
     defaults = {
-        jump_to_single_result = true,
+        jump1 = true,
         winopts = {
             preview = {
                 default = 'bat',
