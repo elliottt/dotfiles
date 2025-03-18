@@ -21,7 +21,6 @@
     git-absorb
     graphviz
     nodenv
-    watchman
     rsync
     vale
     wget
