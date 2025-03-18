@@ -53,12 +53,13 @@
 
   programs.zsh.envExtra = ''
     # From stripe IT department
-    export PATH="$HOME/stripe/henson/bin:$PATH"
-    export PATH="$PATH:$HOME/stripe/space-commander/bin"
+    # export PATH="$HOME/stripe/henson/bin:$PATH"
+    # export PATH="$PATH:$HOME/stripe/space-commander/bin"
+    export __STRIPE_SHELLINIT_ZSH_SKIP_COMPINIT=1
   '';
 
   programs.zsh.initExtra = ''
-    eval "$(nodenv init -)"
+    source ~/.stripe/shellinit/zshrc
   '';
 
   home.file = {
