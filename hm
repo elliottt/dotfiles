@@ -5,7 +5,7 @@ set -euo pipefail
 root="$(dirname "${BASH_SOURCE[0]}")"
 
 if ! test -d ~/.config/nix; then
-  mkdir ~/.config/nix
+  mkdir -p ~/.config/nix
 fi
 
 if ! test -f ~/.config/nix/nix.conf; then
