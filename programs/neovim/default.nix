@@ -56,7 +56,6 @@ in
       pkgs.vimPlugins.tabline-nvim
       pkgs.vimPlugins.lualine-nvim
       pkgs.vimPlugins.mkdnflow-nvim
-      pkgs.vimPlugins.dressing-nvim
 
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
         bash

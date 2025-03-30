@@ -72,9 +72,3 @@ require 'mkdnflow'.setup {
         MkdnGoBack = false,
     },
 }
-
-require 'dressing'.setup{
-    select = {
-        backend = { 'telescope', 'builtin' },
-    }
-}
