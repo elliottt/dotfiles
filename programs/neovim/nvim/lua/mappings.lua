@@ -168,26 +168,27 @@ cmp.setup{
 }
 
 -- lsp
-local function lsp_attach(_, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+vim.api.nvim_create_autocmd('LspAttach', {
+    group = vim.api.nvim_create_augroup('my.lsp', {}),
+    callback = function(args)
+        vim.api.nvim_buf_set_option(args.buf, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    wk.add{
-        mode = 'n',
-        silent = true,
-        buffer = bufnr,
-        { '<localleader>f', '<cmd>lua LspUtil.format()<cr>', desc = 'Format' },
-        { '<localleader>a', '<cmd>lua LspUtil.code_action()<cr>', desc = 'Code actions' },
-        { '<localleader>rn', '<cmd>lua LspUtil.rename()<cr>', desc = 'Rename' },
-        { '<localleader>k', '<cmd>lua LspUtil.diagnostic.open()<cr>', desc = 'Line diagnostics' },
-        { '<localleader>d', '<cmd>FzfLua lsp_document_diagnostics<cr>', desc = 'Diagnostics' },
-        { '<localleader>s', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document symbols' },
-        { 'K', '<cmd>lua LspUtil.hover()<cr>', desc = 'Hover' },
-        { 'gd', '<cmd>FzfLua lsp_definitions<cr>', desc = 'Go to definition' },
-        { 'gi', '<cmd>FzfLua lsp_implementations<cr>', desc = 'Go to implementation' },
-        { 'gr', '<cmd>FzfLua lsp_references<cr>', desc = 'Find all references' },
-        { '[d', '<cmd>lua LspUtil.diagnostic.prev()<cr>', desc = 'Previous diagnostic' },
-        { ']d', '<cmd>lua LspUtil.diagnostic.next()<cr>', desc = 'Next diagnostic' },
-    }
-end
-
-return { lsp_attach = lsp_attach }
+        wk.add{
+            mode = 'n',
+            silent = true,
+            buffer = args.buf,
+            { '<localleader>f', '<cmd>lua LspUtil.format()<cr>', desc = 'Format' },
+            { '<localleader>a', '<cmd>lua LspUtil.code_action()<cr>', desc = 'Code actions' },
+            { '<localleader>rn', '<cmd>lua LspUtil.rename()<cr>', desc = 'Rename' },
+            { '<localleader>k', '<cmd>lua LspUtil.diagnostic.open()<cr>', desc = 'Line diagnostics' },
+            { '<localleader>d', '<cmd>FzfLua lsp_document_diagnostics<cr>', desc = 'Diagnostics' },
+            { '<localleader>s', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document symbols' },
+            { 'K', '<cmd>lua LspUtil.hover()<cr>', desc = 'Hover' },
+            { 'gd', '<cmd>FzfLua lsp_definitions<cr>', desc = 'Go to definition' },
+            { 'gi', '<cmd>FzfLua lsp_implementations<cr>', desc = 'Go to implementation' },
+            { 'gr', '<cmd>FzfLua lsp_references<cr>', desc = 'Find all references' },
+            { '[d', '<cmd>lua LspUtil.diagnostic.prev()<cr>', desc = 'Previous diagnostic' },
+            { ']d', '<cmd>lua LspUtil.diagnostic.next()<cr>', desc = 'Next diagnostic' },
+        }
+    end,
+})
