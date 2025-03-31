@@ -26,6 +26,11 @@ require 'nvim-treesitter.configs'.setup {
     },
 }
 
+-- Temporary workaround for flickering when the same buffer is viewed from
+-- different positions: https://github.com/neovim/neovim/issues/32660#issuecomment-2693494954
+-- should be fixed by https://github.com/neovim/neovim/pull/33145
+vim.g._ts_force_sync_parsing = true
+
 require 'kanagawa'.setup{
     colors = {
         theme = {
