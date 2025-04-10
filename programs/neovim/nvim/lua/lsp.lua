@@ -15,18 +15,13 @@ local util = require 'lspconfig.util'
 local capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- clangd config
-local clangd_path = vim.fn.glob('bazel-*/external/llvm_toolchain*/bin/clangd')
-if clangd_path ~= "" then
-    lsp.clangd.setup {
-        cmd = { clangd_path, "--background-index" },
-        capabilities = capabilities,
-    }
-elseif vim.fn.executable('clangd') == 1 then
+if vim.fn.executable('clangd') == 1 then
     lsp.clangd.setup {
         capabilities = capabilities,
     }
 end
 
+-- go config
 if vim.fn.glob("bin/gopls.sh") ~= "" then
     lsp.gopls.setup {
         cmd = { "bin/gopls.sh" },
