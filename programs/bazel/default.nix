@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     # Bazel autocompletion for fzf
     _fzf_complete_bazelisk() {
       case "$@" in

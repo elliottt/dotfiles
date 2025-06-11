@@ -57,7 +57,7 @@
     export __STRIPE_SHELLINIT_ZSH_SKIP_COMPINIT=1
   '';
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     source ~/.stripe/shellinit/zshrc
   '';
 
