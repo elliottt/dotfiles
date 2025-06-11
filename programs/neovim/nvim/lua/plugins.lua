@@ -1,8 +1,15 @@
 -- vim: foldmethod=marker
 
+local actions = require 'fzf-lua'.actions
+
 require 'fzf-lua'.setup{
     defaults = {
-        jump1 = true,
+        lsp = {
+            jump1 = true,
+        },
+        actions = {
+            ["enter"] = actions.file_edit,
+        },
         winopts = {
             preview = {
                 default = 'bat',
@@ -77,3 +84,5 @@ require 'mkdnflow'.setup {
         MkdnGoBack = false,
     },
 }
+
+return nil
