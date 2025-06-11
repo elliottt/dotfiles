@@ -45,15 +45,7 @@
          "new-window -n finch finch; swap-window -s finch -t 0"
 
       # Terminal colors
-      if-shell "[ \"$TERM\" = \"alacritty\" ]" {
-        set -g default-terminal "alacritty"
-      } {
-        if-shell "[ \"$TERM\" = \"xterm-256color\" ]" {
-          set -g default-terminal "xterm-256color"
-        } {
-          set -g default-terminal "screen-256color"
-        }
-      }
+      set-option -g default-terminal "screen-256-color"
 
       # Reloading
       bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded..."
