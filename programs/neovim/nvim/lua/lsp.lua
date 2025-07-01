@@ -1,6 +1,10 @@
 
 local lsp = require 'lspconfig'
 
+-- The log fills up way too quickly, and this is easy to locally turn back on if
+-- necessary.
+vim.lsp.set_log_level('OFF')
+
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics,
     {
