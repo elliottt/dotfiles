@@ -26,6 +26,7 @@
     wget
     shellcheck
     awscli2
+    wasm-tools
 
     (python3.withPackages (pythonPackages: [
       pythonPackages.lmdb
