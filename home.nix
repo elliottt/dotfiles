@@ -48,6 +48,7 @@
   programs.git = {
     enable = true;
     userName = "Trevor Elliott";
+    userEmail = lib.mkDefault "awesomelyawesome@gmail.com";
     aliases = {
       "lol" = lib.concatStringsSep " " [
         "log"
@@ -69,6 +70,8 @@
   programs.jujutsu = {
     enable = true;
     settings.user.name = "Trevor Elliott";
+    settings.user.email = lib.mkDefault "awesomelyawesome@gmail.com";
+    settings.ui.default-command = "log";
   };
 
   programs.htop.enable = true;
