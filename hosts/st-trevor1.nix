@@ -8,6 +8,7 @@
 
   programs.git.userEmail = "trevor@stripe.com";
   programs.gh.settings.http_unix_socket = "/Users/trevor/.stripeproxy";
+  programs.jujutsu.settings.user.email = "trevor@stripe.com";
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

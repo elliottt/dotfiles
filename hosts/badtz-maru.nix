@@ -9,6 +9,7 @@
   targets.genericLinux.enable = true;
 
   programs.git.userEmail = "awesomelyawesome@gmail.com";
+  programs.jujutsu.settings.user.email = "awesomelyawesome@gmail.com";
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

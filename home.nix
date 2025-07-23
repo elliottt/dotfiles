@@ -66,6 +66,11 @@
     ];
   };
 
+  programs.jujutsu = {
+    enable = true;
+    settings.user.name = "Trevor Elliott";
+  };
+
   programs.htop.enable = true;
 
   programs.ripgrep.enable = true;
