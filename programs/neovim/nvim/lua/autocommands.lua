@@ -35,6 +35,7 @@ augroup("extra_filetypedetect", function(au)
     filetype("*.{ll,lll,llo}", "llvm")
     filetype("*.ott", "ott")
     filetype("*.tex", "tex")
+    filetype("*.rbi", "ruby")
 
     au({"BufNewFile", "BufRead"}, {
         pattern = "*.isle",
