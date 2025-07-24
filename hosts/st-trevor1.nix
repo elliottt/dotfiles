@@ -28,6 +28,7 @@
     shellcheck
     awscli2
     wasm-tools
+    fastmod
 
     (python3.withPackages (pythonPackages: [
       pythonPackages.lmdb
