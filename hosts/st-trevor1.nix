@@ -16,7 +16,6 @@
     nerd-fonts.fira-code
 
     parallel
-    hub
     rsync
     fd
     git-absorb
