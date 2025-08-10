@@ -13,3 +13,8 @@ uses of the `hm` script.
 ## Adding a new host
 
 Create a new config in the `hosts` directory, and add an entry in `flake.nix`.
+
+## Tips
+
+- When computing the `sha256` value, use `nix-prefetch-url` with the github
+  archive url.
