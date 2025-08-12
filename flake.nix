@@ -60,14 +60,6 @@
           home = ./hosts/bakaneko.nix;
         };
 
-        "trevor@telliott" = mkHostConfig {
-          home = ./hosts/telliott.nix;
-        };
-
-        "trevor@trogdor" = mkHostConfig {
-          home = ./hosts/trogdor.nix;
-        };
-
         "trevor@st-trevor1" = mkHostConfig {
           home = ./hosts/st-trevor1.nix;
           system = "aarch64-darwin";
