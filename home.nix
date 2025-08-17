@@ -29,6 +29,12 @@
 
   programs.eza.enable = true;
 
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [ "--cmd" "cd" ];
+  };
+
   programs.fzf = {
     enable = true;
     defaultOptions = [
