@@ -63,6 +63,7 @@
   '';
 
   programs.zsh.initContent = ''
+    # STRIPE_DO_NOT_MANAGE=1
     source ~/.stripe/shellinit/zshrc
   '';
 
