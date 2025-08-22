@@ -92,7 +92,7 @@
     settings = {
       add_newline = false;
       format = lib.mkDefault (lib.concatStrings [
-        "$cmd_duration$username $directory"
+        "$cmd_duration$username $hostname$directory"
         "\${custom.git_branch}\${custom.git_status}\${custom.jj}"
         "$jobs"
         "$line_break$character"
