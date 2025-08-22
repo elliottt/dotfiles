@@ -1,15 +1,7 @@
 { config, pkgs, ... }:
 
-let
-  wrapNixGL = import ../lib/nixgl.nix {
-    inherit pkgs;
-    nixGL = "${pkgs.nixgl.nixGLIntel}/bin/nixGLIntel";
-  };
-in {
+{
   imports = [
-    ../programs/alacritty
-    ../programs/bakaneko
-    ../programs/rust
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -19,33 +11,10 @@ in {
 
   targets.genericLinux.enable = true;
 
-  # Override some alacritty settings
-  programs.alacritty.package = wrapNixGL "alacritty" pkgs.alacritty;
-  programs.alacritty.settings.font.size = 8;
-
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "23.05"; # Please read the comment before changing.
-
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    qmk
-    qmk-udev-rules
-
-    (binutils // { meta.priority = 6; })
-    (gcc // { meta.priority = 8; })
-
-    clang_16
-    clang-tools_16
   ];
-
-  fonts.fontconfig.enable = true;
 
   home.file = {
 
@@ -74,4 +43,13 @@ in {
     };
 
   };
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "23.05"; # Please read the comment before changing.
 }
