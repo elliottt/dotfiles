@@ -92,11 +92,16 @@
     settings = {
       add_newline = false;
       format = lib.mkDefault (lib.concatStrings [
-        "$cmd_duration$username $hostname$directory"
+        "$cmd_duration$username$hostname $directory"
         "\${custom.git_branch}\${custom.git_status}\${custom.jj}"
         "$jobs"
         "$line_break$character"
       ]);
+      hostname = {
+        ssh_only = true;
+        ssh_symbol = "";
+        format = "[@$hostname]($style)";
+      };
       cmd_duration = {
         format = "[$duration]($style) ";
       };
