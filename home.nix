@@ -69,6 +69,7 @@
     ignores = [
       ".direnv/"
       ".envrc"
+      ".jj/"
     ];
   };
 
