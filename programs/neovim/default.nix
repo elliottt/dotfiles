@@ -55,7 +55,6 @@ in
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.tabline-nvim
       pkgs.vimPlugins.lualine-nvim
-      pkgs.vimPlugins.mkdnflow-nvim
 
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
         bash

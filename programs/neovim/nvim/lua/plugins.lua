@@ -70,19 +70,5 @@ require 'lualine'.setup {
         lualine_z = {},
     }
 }
-require 'mkdnflow'.setup {
-    to_do = {
-        symbols = { ' ', '-', 'x' }
-    },
-    modules = {
-        folds = false,
-    },
-    links = {
-        conceal = true,
-    },
-    mappings = {
-        MkdnGoBack = false,
-    },
-}
 
 return nil
