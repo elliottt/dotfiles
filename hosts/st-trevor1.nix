@@ -80,6 +80,10 @@
       family = "FiraCode Nerd Font Mono"
       style = "Regular"
     '';
+
+    ".config/ghostty/config".text = ''
+      background = 000000
+    '';
   };
 
   # This value determines the Home Manager release that your configuration is
