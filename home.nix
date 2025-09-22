@@ -78,6 +78,12 @@
     settings.user.name = "Trevor Elliott";
     settings.user.email = lib.mkDefault "awesomelyawesome@gmail.com";
     settings.ui.default-command = "log";
+    settings.revset-aliases = {
+      "closest_bookmark(to)" = "heads(::to & bookmarks() & mutable())";
+    };
+    settings.aliases = {
+      tug = ["bookmark" "move" "-f" "closest_bookmark(@-)" "-t" "@-"];
+    };
   };
 
   programs.htop.enable = true;
