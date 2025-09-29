@@ -84,6 +84,10 @@
     settings.aliases = {
       tug = ["bookmark" "move" "-f" "closest_bookmark(@-)" "-t" "@-"];
     };
+    settings.merge-tools.nvim = {
+      program = "nvim";
+      merge-args = ["-d" "$left" "$output" "$right"];
+    };
   };
 
   programs.htop.enable = true;
