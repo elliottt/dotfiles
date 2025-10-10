@@ -1,6 +1,4 @@
 
-local lsp = require 'lspconfig'
-
 -- The log fills up way too quickly, and this is easy to locally turn back on if
 -- necessary.
 vim.lsp.set_log_level('OFF')
@@ -15,21 +13,20 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     }
 )
 
-local util = require 'lspconfig.util'
 local capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- clangd config
-if vim.fn.executable('clangd') == 1 then
-    lsp.clangd.setup {
-        capabilities = capabilities,
-    }
-end
+vim.lsp.config('clangd', {
+    capabilities = capabilities,
+})
+vim.lsp.enable('clangd')
 
 -- go config
 if vim.fn.glob("bin/gopls.sh") ~= "" then
-    lsp.gopls.setup {
+    vim.lsp.config('gopls', {
         cmd = { "bin/gopls.sh" },
-    }
+    })
+    vim.lsp.enable('gopls')
 end
 
 -- sorbet config
@@ -47,7 +44,8 @@ if vim.fn.glob("scripts/bin/typecheck") ~= "" then
         "--lsp",
         "--enable-all-experimental-lsp-features",
     }
-    sorbet_opts.root_dir = util.root_pattern(".git")
+    sorbet_opts.root_dir = nil
+    sorbet_opts.root_markers = {'.git'}
 else
     local home = vim.fn.environ().HOME
     local local_sorbet_build = vim.fn.glob(home.."/stripe/sorbet/bazel-bin/main/sorbet")
@@ -62,14 +60,12 @@ else
         }
     end
 end
-lsp.sorbet.setup(sorbet_opts)
+
+vim.lsp.config('sorbet', sorbet_opts)
+vim.lsp.enable('sorbet')
 
 -- rust-analyzer config
-lsp.rust_analyzer.setup {
+vim.lsp.config('rust-analyzer', {
     capabilities = capabilities,
-}
-
--- typescript config
-if vim.fn.executable("typescript-language-server") == 1 then
-    lsp.tsserver.setup {}
-end
+})
+vim.lsp.enable('rust-analyzer')

@@ -182,6 +182,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             { '<localleader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', desc = 'Rename' },
             { '<localleader>k', '<cmd>lua vim.diagnostic.open_float()<cr>', desc = 'Line diagnostics' },
             { '<localleader>d', '<cmd>FzfLua lsp_document_diagnostics<cr>', desc = 'Diagnostics' },
+            { '<localleader>w', '<cmd>FzfLua lsp_workspace_diagnostics<cr>', desc = 'Workspace Diagnostics' },
             { '<localleader>s', '<cmd>FzfLua lsp_document_symbols<cr>', desc = 'Document symbols' },
             { 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', desc = 'Hover' },
             { 'gd', '<cmd>FzfLua lsp_definitions<cr>', desc = 'Go to definition' },
