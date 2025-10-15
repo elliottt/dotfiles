@@ -52,22 +52,26 @@ require 'kanagawa'.setup{
 }
 vim.cmd.colorscheme('kanagawa')
 
-local tabline = require 'tabline'
-
-tabline.setup { enable = false }
-
 require 'lualine'.setup {
     options = {
         icons_enabled = false,
         theme = 'seoul256',
     },
     tabline = {
-        lualine_a = {},
+        lualine_a = {'buffers'},
         lualine_b = {},
-        lualine_c = { tabline.tabline_buffers },
-        lualine_x = { tabline.tabline_tabs },
+        lualine_c = {},
+        lualine_x = {},
         lualine_y = {},
-        lualine_z = {},
+        lualine_z = {'tabs'},
+    },
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {'filename'},
+        lualine_x = {'encoding', 'fileformat', 'filetype', 'lsp_status'},
+        lualine_y = {'progress'},
+        lualine_z = {'location'},
     }
 }
 

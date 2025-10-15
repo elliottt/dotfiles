@@ -40,7 +40,6 @@ in
     plugins = [
       wit-nvim-pkg
       pkgs.vimPlugins.fzf-lua
-      pkgs.vimPlugins.vim-repeat
       pkgs.vimPlugins.vim-fugitive
       pkgs.vimPlugins.nvim-surround
       pkgs.vimPlugins.which-key-nvim
@@ -52,8 +51,6 @@ in
       pkgs.vimPlugins.cmp-vsnip
       pkgs.vimPlugins.vim-vsnip
       pkgs.vimPlugins.kanagawa-nvim
-      pkgs.vimPlugins.nvim-web-devicons
-      pkgs.vimPlugins.tabline-nvim
       pkgs.vimPlugins.lualine-nvim
 
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
