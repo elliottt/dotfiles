@@ -13,59 +13,52 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     }
 )
 
-local capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- clangd config
-vim.lsp.config('clangd', {
-    capabilities = capabilities,
+-- Enable completion globally
+vim.lsp.config('*', {
+    capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 })
-vim.lsp.enable('clangd')
+
+vim.lsp.enable({'clangd', 'rust-analyzer'})
+
+-- sorbet config
+if vim.fn.glob("scripts/bin/typecheck") ~= "" then
+    vim.lsp.config('sorbet', {
+        -- use 'pay exec' when in pay-server
+        cmd = {
+            "scripts/dev_productivity/while_pay_up_connected.sh",
+            "pay",
+            "exec",
+            "scripts/bin/typecheck",
+            "--lsp",
+            "--enable-all-experimental-lsp-features",
+        },
+        root_markers = {'.git'}
+    })
+    vim.lsp.enable('sorbet')
+else
+    local home = vim.fn.environ().HOME
+    local local_sorbet_build = vim.fn.glob(home.."/stripe/sorbet/bazel-bin/main/sorbet")
+    if local_sorbet_build ~= "" then
+        vim.lsp.config('sorbet', {
+            -- prefer a local build of sorbet if it's available
+            cmd = {
+                local_sorbet_build,
+                "--silence-dev-message",
+                "--lsp",
+                "--enable-all-experimental-lsp-features",
+                ".",
+            }
+        })
+        vim.lsp.enable('sorbet')
+    end
+end
 
 -- go config
 if vim.fn.glob("bin/gopls.sh") ~= "" then
     vim.lsp.config('gopls', {
         cmd = { "bin/gopls.sh" },
     })
+
+    -- Don't univerally enable gopls
     vim.lsp.enable('gopls')
 end
-
--- sorbet config
-local sorbet_opts = {
-    capabilities = capabilities,
-}
-
-if vim.fn.glob("scripts/bin/typecheck") ~= "" then
-    -- use 'pay exec' when in pay-server
-    sorbet_opts.cmd = {
-        "scripts/dev_productivity/while_pay_up_connected.sh",
-        "pay",
-        "exec",
-        "scripts/bin/typecheck",
-        "--lsp",
-        "--enable-all-experimental-lsp-features",
-    }
-    sorbet_opts.root_dir = nil
-    sorbet_opts.root_markers = {'.git'}
-else
-    local home = vim.fn.environ().HOME
-    local local_sorbet_build = vim.fn.glob(home.."/stripe/sorbet/bazel-bin/main/sorbet")
-    if local_sorbet_build ~= "" then
-        -- prefer a local build of sorbet if it's available
-        sorbet_opts.cmd = {
-            local_sorbet_build,
-            "--silence-dev-message",
-            "--lsp",
-            "--enable-all-experimental-lsp-features",
-            ".",
-        }
-    end
-end
-
-vim.lsp.config('sorbet', sorbet_opts)
-vim.lsp.enable('sorbet')
-
--- rust-analyzer config
-vim.lsp.config('rust-analyzer', {
-    capabilities = capabilities,
-})
-vim.lsp.enable('rust-analyzer')
