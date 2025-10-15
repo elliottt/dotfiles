@@ -63,6 +63,7 @@ in
         lua
         markdown
         rust
+        ruby
         typescript
         vim
       ]))
