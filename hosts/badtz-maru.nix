@@ -12,14 +12,7 @@
   # environment.
   home.packages = with pkgs; [
     bazelisk
-
     p7zip
-
-    (binutils // { meta.priority = 6; })
-    (gcc // { meta.priority = 8; })
-
-    clang_16
-    clang-tools_16
   ];
 
   services.ssh-agent.enable = true;
