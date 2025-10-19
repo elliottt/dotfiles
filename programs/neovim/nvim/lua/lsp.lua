@@ -18,7 +18,7 @@ vim.lsp.config('*', {
     capabilities = require 'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 })
 
-vim.lsp.enable({'clangd', 'rust-analyzer'})
+vim.lsp.enable({'clangd', 'rust_analyzer'})
 
 -- sorbet config
 if vim.fn.glob("scripts/bin/typecheck") ~= "" then
