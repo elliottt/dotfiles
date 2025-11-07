@@ -141,6 +141,7 @@
         jj = {
           description = "The current jj status";
           require_repo = true;
+          ignore_timeout = true;
           when = "jj --ignore-working-copy root";
           command = ''
             jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 --template '
@@ -166,6 +167,7 @@
         git_branch = {
           description = "Only show git_branch if we're not in a jj repo";
           require_repo = true;
+          ignore_timeout = true;
           when = "! jj --ignore-working-copy root";
           command = "starship module git_branch";
           style = "";
@@ -173,6 +175,7 @@
         git_status = {
           description = "Only show git_$tatus if we're not in a jj repo";
           require_repo = true;
+          ignore_timeout = true;
           disabled = lib.mkDefault false;
           when = "! jj --ignore-working-copy root";
           command = "starship module git_status";
