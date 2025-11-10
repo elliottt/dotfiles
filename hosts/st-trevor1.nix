@@ -6,7 +6,7 @@
   home.username = "trevor";
   home.homeDirectory = "/Users/trevor";
 
-  programs.git.userEmail = "trevor@stripe.com";
+  programs.git.settings.user.email = "trevor@stripe.com";
   programs.gh.settings.http_unix_socket = "/Users/trevor/.stripeproxy";
   programs.jujutsu.settings.user.email = "trevor@stripe.com";
 
@@ -43,7 +43,7 @@
   programs.starship.settings.custom.git_status.disabled = true;
 
   # Helpful aliases for fetching branches that are skipped by default.
-  programs.git.aliases = {
+  programs.git.settings.alias = {
     "remote-fetch" = "!rf() { git config --add remote.origin.fetch +refs/heads/$1:refs/remotes/origin/$1; git fetch origin +$1:refs/remotes/origin/$1; }; rf";
     "remote-purge" = "!rp() { git config --unset remote.origin.fetch \".*$1.*\"; git update-ref -d refs/remotes/origin/$1; }; rp";
   };

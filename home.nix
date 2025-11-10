@@ -46,9 +46,9 @@
 
   programs.git = {
     enable = true;
-    userName = "Trevor Elliott";
-    userEmail = lib.mkDefault "awesomelyawesome@gmail.com";
-    aliases = {
+    settings.user.name = "Trevor Elliott";
+    settings.user.email = lib.mkDefault "awesomelyawesome@gmail.com";
+    settings.alias = {
       "lol" = lib.concatStringsSep " " [
         "log"
         "--graph"
@@ -56,10 +56,8 @@
         "--pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
       ];
     };
-    extraConfig = {
-      pull.rebase = true;
-      rebase.autoStash = true;
-    };
+    settings.pull.rebase = true;
+    settings.rebase.autoStash = true;
     ignores = [
       ".direnv/"
       ".envrc"
