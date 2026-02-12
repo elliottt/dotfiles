@@ -29,6 +29,18 @@ let
     src = wit-nvim;
   };
 
+  nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
+    p.bash
+    p.c
+    p.cpp
+    p.lua
+    p.markdown
+    p.rust
+    p.ruby
+    p.typescript
+    p.vim
+  ]);
+
 in
 
 {
@@ -39,6 +51,7 @@ in
 
     plugins = [
       wit-nvim-pkg
+      nvim-treesitter
       pkgs.vimPlugins.fzf-lua
       pkgs.vimPlugins.vim-fugitive
       pkgs.vimPlugins.nvim-surround
@@ -52,22 +65,9 @@ in
       pkgs.vimPlugins.vim-vsnip
       pkgs.vimPlugins.kanagawa-nvim
       pkgs.vimPlugins.lualine-nvim
-
-      (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
-        bash
-        c
-        cpp
-        lua
-        markdown
-        rust
-        ruby
-        typescript
-        vim
-      ]))
     ] ++ (if use-two-trucs then [ two-trucs-nvim-pkg ] else []);
 
     initLua = ''
-
       require 'plugins'
       require 'autocommands'
       require 'settings'

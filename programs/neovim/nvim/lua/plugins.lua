@@ -27,6 +27,8 @@ require 'leap'.setup{}
 
 require 'nvim-surround'.setup{}
 
+require 'nvim-treesitter'.setup{}
+
 -- Temporary workaround for flickering when the same buffer is viewed from
 -- different positions: https://github.com/neovim/neovim/issues/32660#issuecomment-2693494954
 -- should be fixed by https://github.com/neovim/neovim/pull/33145
