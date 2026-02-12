@@ -66,7 +66,7 @@ in
       ]))
     ] ++ (if use-two-trucs then [ two-trucs-nvim-pkg ] else []);
 
-    extraLuaConfig = ''
+    initLua = ''
 
       require 'plugins'
       require 'autocommands'
