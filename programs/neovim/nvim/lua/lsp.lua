@@ -21,7 +21,7 @@ vim.lsp.config('*', {
 vim.lsp.enable({'clangd', 'rust_analyzer'})
 
 -- sorbet config
-if vim.fn.glob("scripts/bin/typecheck") ~= "" then
+if vim.fn.filereadable("scripts/bin/typecheck") then
     vim.lsp.config('sorbet', {
         -- use 'pay exec' when in pay-server
         cmd = {
@@ -32,7 +32,7 @@ if vim.fn.glob("scripts/bin/typecheck") ~= "" then
             "--lsp",
             "--enable-all-experimental-lsp-features",
         },
-        root_markers = {'.git'}
+        root_dir = vim.fs.abspath(".")
     })
     vim.lsp.enable('sorbet')
 else
