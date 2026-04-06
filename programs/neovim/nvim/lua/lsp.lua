@@ -1,17 +1,14 @@
 
 -- The log fills up way too quickly, and this is easy to locally turn back on if
 -- necessary.
-vim.lsp.set_log_level('OFF')
+vim.lsp.log.set_level('OFF')
 
-vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-        virtual_text = false,
-        signs = true,
-        update_in_insert = false,
-        underline = true,
-    }
-)
+vim.diagnostic.config({
+    virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+    underline = true,
+})
 
 -- Enable completion globally
 vim.lsp.config('*', {
