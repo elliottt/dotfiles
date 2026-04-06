@@ -67,6 +67,10 @@
     source ~/.stripe/shellinit/zshrc
   '';
 
+  programs.neovim.extraConfig = ''
+    set nofixeol
+  '';
+
   home.file = {
     ".config/alacritty/alacritty.toml".text = ''
       [window.padding]
