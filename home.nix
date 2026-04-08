@@ -46,6 +46,9 @@
 
   programs.git = {
     enable = true;
+
+    signing.format = null;
+
     settings.user.name = "Trevor Elliott";
     settings.user.email = lib.mkDefault "awesomelyawesome@gmail.com";
     settings.alias = {

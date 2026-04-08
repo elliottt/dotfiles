@@ -49,6 +49,9 @@ in
     enable = true;
     defaultEditor = true;
 
+    withRuby = false;
+    withPython3 = false;
+
     plugins = [
       wit-nvim-pkg
       nvim-treesitter
