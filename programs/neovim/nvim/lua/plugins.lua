@@ -71,4 +71,19 @@ require 'lualine'.setup {
     }
 }
 
+require 'conform'.setup{
+    format_on_save = nil,
+    default_format_opts = {
+        lsp_format = "fallback",
+    },
+    formatters = {
+        rubyfmt_local = {
+            command = vim.fs.abspath("~/stripe/rubyfmt/target/release/rubyfmt-main"),
+        },
+    },
+    formatters_by_ft = {
+        ruby = { "rubyfmt_local" },
+    },
+}
+
 return nil

@@ -68,6 +68,7 @@ in
       pkgs.vimPlugins.vim-vsnip
       pkgs.vimPlugins.kanagawa-nvim
       pkgs.vimPlugins.lualine-nvim
+      pkgs.vimPlugins.conform-nvim
     ] ++ (if use-two-trucs then [ two-trucs-nvim-pkg ] else []);
 
     initLua = ''

@@ -86,6 +86,9 @@ wk.add{
     { '<leader>u', 'guaw', desc = 'Lowercase word' },
     { '<leader>l', '<cmd>FzfLua blines<cr>', desc = 'Buffer lines' },
 
+    -- formatting
+    { '<localleader>f', '<cmd>lua require"conform".format()<cr>', desc = 'Format' },
+
     -- misc
     { '<leader>h', '<cmd>noh<cr>', desc = 'Clear highlighting' },
     { '<leader>p', toggle_paste, desc = 'Toggle paste mode' },
@@ -177,7 +180,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
             mode = 'n',
             silent = true,
             buffer = args.buf,
-            { '<localleader>f', '<cmd>lua vim.lsp.buf.format()<cr>', desc = 'Format' },
             { '<localleader>a', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = 'Code actions' },
             { '<localleader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', desc = 'Rename' },
             { '<localleader>k', '<cmd>lua vim.diagnostic.open_float()<cr>', desc = 'Line diagnostics' },
