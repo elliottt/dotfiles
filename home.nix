@@ -68,6 +68,26 @@
     ];
   };
 
+  programs.helix = {
+    enable = true;
+
+    settings = {
+      theme = "kanabox";
+
+      keys.normal = {
+        "C-e" = "@zj";
+        "C-y" = "@zk";
+        "H" = "@zt";
+        "M" = "@zc";
+        "L" = "@zb";
+      };
+    };
+
+    themes = {
+      kanabox = ./programs/helix/themes/kanabox.toml;
+    };
+  };
+
   programs.jujutsu = {
     enable = true;
     settings.user.name = "Trevor Elliott";
