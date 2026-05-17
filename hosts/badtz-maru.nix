@@ -15,6 +15,10 @@
     p7zip
   ];
 
+  programs.zsh.envExtra = ''
+  export COLORTERM="truecolor"
+  '';
+
   services.ssh-agent.enable = true;
 
   # This value determines the Home Manager release that your configuration is
