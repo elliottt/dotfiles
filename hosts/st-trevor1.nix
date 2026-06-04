@@ -62,6 +62,11 @@
     export __STRIPE_SHELLINIT_ZSH_SKIP_COMPINIT=1
   '';
 
+  programs.zsh.completionInit = ''
+    autoload -U bashcompinit && bashcompinit
+    autoload -U compinit && compinit
+  '';
+
   programs.zsh.initContent = ''
     # STRIPE_DO_NOT_MANAGE=1
     source ~/.stripe/shellinit/zshrc
@@ -72,19 +77,6 @@
   '';
 
   home.file = {
-    ".config/alacritty/alacritty.toml".text = ''
-      [window.padding]
-      x = 5
-      y = 5
-
-      [font]
-      size = 12
-
-      [font.normal]
-      family = "FiraCode Nerd Font Mono"
-      style = "Regular"
-    '';
-
     ".config/ghostty/config".text = ''
       background = 000000
     '';
