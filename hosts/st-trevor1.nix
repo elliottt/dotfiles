@@ -60,6 +60,8 @@
     # export PATH="$HOME/stripe/henson/bin:$PATH"
     # export PATH="$PATH:$HOME/stripe/space-commander/bin"
     export __STRIPE_SHELLINIT_ZSH_SKIP_COMPINIT=1
+
+    export PAY_SSH_CONNECTOR=openssh
   '';
 
   programs.zsh.completionInit = ''
