@@ -81,6 +81,10 @@
         "M" = "@gc";
         "L" = "@gb";
       };
+
+      editor.cursor-shape = {
+        insert = "bar";
+      };
     };
 
     themes = {
