@@ -60,6 +60,12 @@
           home = ./hosts/bakaneko.nix;
         };
 
+        "trevor@fancy" = mkHostConfig {
+          home = ./hosts/fancy.nix;
+          system = "aarch64-darwin";
+          two-trucs = false;
+        };
+
         "trevor@st-trevor1" = mkHostConfig {
           home = ./hosts/st-trevor1.nix;
           system = "aarch64-darwin";
