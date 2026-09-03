@@ -98,11 +98,11 @@
     settings.user.name = "Trevor Elliott";
     settings.user.email = lib.mkDefault "awesomelyawesome@gmail.com";
     settings.ui.default-command = [ "log" "--ignore-working-copy" ];
-    settings.revset-aliases = {
-      "closest_bookmark(to)" = "heads(::to & bookmarks() & mutable())";
+    settings.revsets = {
+      "bookmark-advance-to" = "closest_pushable(@)";
     };
-    settings.aliases = {
-      tug = ["bookmark" "move" "-f" "closest_bookmark(@-)" "-t" "@-"];
+    settings.revset-aliases = {
+      "closest_pushable(to)" = "heads(::to & mutable() & mutable() & ~(empty() | merges()))";
     };
     settings.merge-tools.nvim = {
       program = "nvim";
