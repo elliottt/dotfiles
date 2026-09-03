@@ -82,8 +82,9 @@
         "L" = "@gb";
       };
 
-      editor.cursor-shape = {
-        insert = "bar";
+      editor = {
+        soft-wrap.enable = true;
+        cursor-shape.insert = "bar";
       };
     };
 
