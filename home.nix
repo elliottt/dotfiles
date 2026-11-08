@@ -83,6 +83,7 @@
       };
 
       editor = {
+        line-number = "relative";
         soft-wrap.enable = true;
         cursor-shape.insert = "bar";
       };
